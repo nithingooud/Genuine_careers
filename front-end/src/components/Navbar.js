@@ -21,8 +21,8 @@ export function NavbarComponent() {
                     <NavbarLink href="/" >
                         Home
                     </NavbarLink>
-                    <NavbarLink href="/job" >About</NavbarLink>
-                    <NavbarLink href="/job" >Contact Us</NavbarLink>
+                    {/* <NavbarLink href="/job" >About</NavbarLink> */}
+                    {/* <NavbarLink href="/job" >Contact Us</NavbarLink> */}
                     <NavbarLink href="/addJob" >Add Jobs</NavbarLink>
                     <NavbarLink href="/addCompany" >Add Company</NavbarLink>
 

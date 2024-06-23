@@ -58,7 +58,7 @@ export function JobDetailsComponent() {
                     <h1 className="heading">Skills</h1>
                     <hr />
                     <div className="flex flex-wrap gap-2 mt-4">
-                        {(jobDetails.skills || []).map((skill) => (
+                        {(jobDetails?.skills || []).map((skill) => (
                             <Badge color={getSkillColor(skill)}>{skill}</Badge>
                         )
                         )}

@@ -48,7 +48,7 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
                     </div>
                     <div className="flex items-center" style={{ justifyContent: 'space-between' }}>
                         <div className="flex flex-wrap gap-2 mt-4">
-                            {(jobDetails.skills || []).map((skill) => (
+                            {(jobDetails?.skills || []).map((skill) => (
                                 <Badge color={getSkillColor(skill)}>{skill}</Badge>
                             )
                             )}
