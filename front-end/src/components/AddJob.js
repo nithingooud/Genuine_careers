@@ -7,6 +7,20 @@ import { API_BASE_URL } from '../environment';
 import Select from 'react-select';
 
 
+const validationSchema = Yup.object().shape({
+
+    qualifications: Yup.array().of(Yup.string().required('Qualification is required')),
+    responsibilities: Yup.array().of(Yup.string().required('Responsibility is required')),
+    skills: Yup.array().of(Yup.string().required('Skill is required')),
+    position: Yup.string().required('Position is required'),
+    experienceMin: Yup.number().required('Minimum Experience is required').positive('Minimum Experience must be positive'),
+    experienceMax: Yup.number()
+        .required('Maximum Experience is required')
+        .positive('Maximum Experience must be positive')
+        .moreThan(Yup.ref('experienceMin'), 'Maximum Experience must be greater than Minimum Experience'),
+    location: Yup.string().required('Location is required'),
+});
+
 const initialValues = {
     company: '',
     qualifications: [''],
@@ -16,7 +30,6 @@ const initialValues = {
     experienceMin: '',
     experienceMax: '',
     location: '',
-    companyDescription: '',
 };
 
 const AddJobDetails = () => {
@@ -45,7 +58,21 @@ const AddJobDetails = () => {
     const handleSubmit = async (values, { setSubmitting }) => {
         try {
             setSubmitting(true);
-            const response = await axios.post(`${API_BASE_URL}/post`, values);
+            console.log(values)
+            const response = await axios.post(`${API_BASE_URL}/addJob`, values);
+            if (response.status == 200) {
+                console.log(response)
+                values = {
+                    company: '',
+                    qualifications: [''],
+                    responsibilities: [''],
+                    skills: [''],
+                    position: '',
+                    experienceMin: '',
+                    experienceMax: '',
+                    location: '',
+                }
+            }
         } catch (error) {
             console.error('Error creating job:', error);
         } finally {
@@ -58,6 +85,7 @@ const AddJobDetails = () => {
             <h1 className="text-xl font-semibold mb-4 mt-4">Create a New Job</h1>
             <Formik
                 initialValues={initialValues}
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
                 {({ values, setFieldValue }) => (
@@ -186,17 +214,10 @@ const AddJobDetails = () => {
                                 type="text"
                                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             />
+                            <ErrorMessage name="location" component="p" className="text-red-600" />
+
                         </div>
 
-                        <div className="mb-4">
-                            <label htmlFor="companyDescription" className="block font-medium">Company Description</label>
-                            <Field
-                                name="companyDescription"
-                                as="textarea"
-                                rows="4"
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                            />
-                        </div>
                         <Button type='submit'>{submitting ? 'Submitting...' : 'Submit'}</Button>
                     </Form>
                 )}

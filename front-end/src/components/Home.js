@@ -1,64 +1,85 @@
-import React from "react";
+import React, { useEffect } from "react";
 import JobCardComponent from "./JobCard";
 import { Pagination } from "flowbite-react";
 import { useState } from "react";
 import '../styles/Home.css'
+import axios from 'axios'
+import { API_BASE_URL } from '../environment';
+
 
 
 
 export function HomeComponent() {
-    let data = [{
-        logo: 'https://images.unsplash.com/photo-1617566347924-ad5ebdaa014e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxvZ29zfGVufDB8fDB8fHww',
-        CompanyName: 'Inncircles',
-        Position: 'Full stack developer',
-        Experience: '2-4 years',
-        ExpectedSalary: '20,00,000',
-        Location: 'Hyderabad',
-        id: 1
-    }, {
-        logo: 'https://images.unsplash.com/photo-1585184394271-4c0a47dc59c9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bG9nb3N8ZW58MHx8MHx8fDA%3D',
-        CompanyName: 'Inncircles2',
-        Position: 'Full stack developer',
-        Experience: '1+ years',
-        ExpectedSalary: '20,00,000', id: 2,
-        Location: 'Hyderabad',
-    }, {
-        logo: 'https://images.unsplash.com/photo-1601158935942-52255782d322?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nb3N8ZW58MHx8MHx8fDA%3D',
-        CompanyName: 'Inncircles3',
-        Position: 'Full stack developer',
-        Experience: '1-2 years',
-        ExpectedSalary: '20,00,000', Location: 'Hyderabad',
-        id: 3
-    }, {
-        logo: 'https://images.unsplash.com/photo-1601158935942-52255782d322?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nb3N8ZW58MHx8MHx8fDA%3D',
-        CompanyName: 'Inncircles3',
-        Position: 'Full stack developer',
-        Experience: '1-2 years',
-        ExpectedSalary: '20,00,000', Location: 'Hyderabad',
-        id: 4
-    }, {
-        logo: 'https://images.unsplash.com/photo-1601158935942-52255782d322?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nb3N8ZW58MHx8MHx8fDA%3D',
-        CompanyName: 'Inncircles3',
-        Position: 'Full stack developer',
-        Experience: '1-2 years',
-        ExpectedSalary: '20,00,000', Location: 'Hyderabad',
-        id: 5
-    },]
 
+    const [jobsData, setJobsData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [loading, setLoading] = useState(false);
 
-    const onPageChange = (page) => setCurrentPage(page);
+    useEffect(() => {
+        getJobsData();
+    }, [currentPage])
+
+    useEffect(() => {
+        getCountOfJobs();
+    }, []);
+
+    const getCountOfJobs = async () => {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/countOfJobs`);
+            if (response.statusText == 'OK') {
+                const totalItems = response.data;
+                const itemsPerPage = 5;
+                const pages = Math.ceil(totalItems / itemsPerPage);
+                setTotalPages(pages);
+            }
+
+        } catch (error) {
+            console.error('Error fetching jobs:', error);
+
+        }
+    }
+
+    const getJobsData = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.post(`${API_BASE_URL}/jobsPosted`, { page: currentPage });
+            if (response.status === 200) {
+                setJobsData(response.data);
+                scrollToTop();
+            } else {
+            }
+        } catch (error) {
+            console.error('Error fetching jobs:', error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+
+
+    const onPageChange = (page) => {
+        setCurrentPage(page)
+    };
 
     return (
         <div className="p-4" style={{ backgroundColor: 'rgb(241 245 249)' }}>
             <div className="d-flex flex-row align-items-center justify-content-center">
-                {data.map(item => (
-                    <JobCardComponent key={item.id} CompanyName={item.CompanyName} Location={item.Location} logo={item.logo}
-                        ExpectedSalary={item.ExpectedSalary} Position={item.Position} Experience={item.Experience} />
+                {jobsData.map(item => (
+                    <JobCardComponent key={item._id} CompanyName={item?.company?.companyName || ''} Location={item?.location || ''} logo={item?.company?.logo || ''}
+                        Position={item?.position || ''} Experience={item?.experience || ''} jobDetails={item} />
                 ))}
             </div>
             <div className="pagination-container">
-                <Pagination currentPage={currentPage} totalPages={5} onPageChange={onPageChange} showIcons />
+                <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} showIcons />
             </div>
         </div>
     );
