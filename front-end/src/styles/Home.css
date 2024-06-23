@@ -1,0 +1,22 @@
+@media (max-width: 768px) {
+    .pagination-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+}

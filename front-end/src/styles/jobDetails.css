@@ -1,0 +1,61 @@
+.company-info-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.company-info-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.company-info-item {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+
+
+.company-info-heading {
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: 400;
+}
+
+.company-info-detail {
+    font-size: small;
+    font-weight: 100;
+    font-family: inherit;
+}
+
+.job-detail {
+    background-color: aliceblue;
+    padding: inherit;
+}
+
+.heading {
+    font-size: x-large;
+    font-family: 'math';
+    font-weight: 600;
+}
+
+.responsibility-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.2rem;
+}
+
+.responsibility-icon {
+    height: 0.75rem;
+    width: 0.75rem;
+    color: #4a4a4a;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.points {
+    font-size: medium;
+    font-family: 'math';
+    font-kerning: none;
+}
