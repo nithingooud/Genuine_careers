@@ -2,6 +2,9 @@ const express = require('express')
 const { mongoose } = require('mongoose')
 const app = express()
 const PORT = 2000
+const cors = require('cors');
+
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017')
 
@@ -14,6 +17,8 @@ mongoose.connection.on('error', () => {
 })
 
 require('./models/job.model')
+require('./models/company.model')
+
 app.use(require('./routes/job.route'))
 
 

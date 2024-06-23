@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
 const jobSchema = new mongoose.Schema({
-    logo: { type: String },
-    CompanyName: { type: String },
-    Position: { type: String },
-    Experience: { minimum: { type: Number }, maximum: { type: Number } },
-    Location: { type: String },
-    Qualifications: [{ type: String }],
-    CompanyDescription: { type: String },
-    Responsibilties: [{ type: String }]
+    company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
+    position: { type: String },
+    experience: { minimum: { type: Number }, maximum: { type: Number } },
+    location: { type: String },
+    qualifications: [{ type: String }],
+    companyDescription: { type: String },
+    responsibilities: [{ type: String }],
+    skills: [{ type: String }]
 })
 
 mongoose.model('Job', jobSchema)

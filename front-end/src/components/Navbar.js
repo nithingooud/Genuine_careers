@@ -24,6 +24,7 @@ export function NavbarComponent() {
                     <NavbarLink href="/job" >About</NavbarLink>
                     <NavbarLink href="/job" >Contact Us</NavbarLink>
                     <NavbarLink href="/addJob" >Add Jobs</NavbarLink>
+                    <NavbarLink href="/addCompany" >Add Company</NavbarLink>
 
                 </NavbarCollapse>
                 <div className="flex md:order-2 items-center">

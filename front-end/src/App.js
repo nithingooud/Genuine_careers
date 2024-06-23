@@ -5,6 +5,7 @@ import { HomeComponent } from './components/Home';
 import { JobDetailsComponent } from './components/JobDetails';
 import { FooterComponent } from './components/Footer'
 import AddJobDetails from './components/AddJob';
+import CompanyForm from './components/AddCompany';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<HomeComponent />} />
         <Route path='/job' element={<JobDetailsComponent />} />
         <Route path='/addJob' element={<AddJobDetails />} />
+        <Route path='/addCompany' element={<CompanyForm />} />
       </Routes>
       <FooterComponent />
     </BrowserRouter>
