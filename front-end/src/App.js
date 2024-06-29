@@ -6,18 +6,28 @@ import { JobDetailsComponent } from './components/JobDetails';
 import { FooterComponent } from './components/Footer'
 import AddJobDetails from './components/AddJob';
 import CompanyForm from './components/AddCompany';
+import { useState } from 'react';
+
 
 function App() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
+  const handleDrawerClose = () => setIsDrawerOpen(false);
   return (
     <BrowserRouter>
-      <NavbarComponent />
-      <Routes>
-        <Route path='/' element={<HomeComponent />} />
-        <Route path='/job' element={<JobDetailsComponent />} />
-        <Route path='/addJob' element={<AddJobDetails />} />
-        <Route path='/addCompany' element={<CompanyForm />} />
-      </Routes>
-      <FooterComponent />
+      <div className="flex flex-col min-h-screen">
+        <NavbarComponent />
+        <main className="flex-grow">
+          <Routes>
+            <Route path='/' element={<HomeComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
+            <Route path='/job' element={<JobDetailsComponent />} />
+            <Route path='/addJob' element={<AddJobDetails />} />
+            <Route path='/addCompany' element={<CompanyForm />} />
+          </Routes>
+        </main>
+        <FooterComponent isDrawerOpen={isDrawerOpen} />
+      </div>
     </BrowserRouter>
   );
 

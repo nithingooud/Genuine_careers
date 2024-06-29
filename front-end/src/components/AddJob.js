@@ -9,16 +9,16 @@ import Select from 'react-select';
 
 const validationSchema = Yup.object().shape({
 
-    qualifications: Yup.array().of(Yup.string().required('Qualification is required')),
-    responsibilities: Yup.array().of(Yup.string().required('Responsibility is required')),
-    skills: Yup.array().of(Yup.string().required('Skill is required')),
-    position: Yup.string().required('Position is required'),
-    experienceMin: Yup.number().required('Minimum Experience is required').positive('Minimum Experience must be positive'),
-    experienceMax: Yup.number()
-        .required('Maximum Experience is required')
-        .positive('Maximum Experience must be positive')
-        .moreThan(Yup.ref('experienceMin'), 'Maximum Experience must be greater than Minimum Experience'),
-    location: Yup.string().required('Location is required'),
+    // qualifications: Yup.array().of(Yup.string().required('Qualification is required')),
+    // responsibilities: Yup.array().of(Yup.string().required('Responsibility is required')),
+    // skills: Yup.array().of(Yup.string().required('Skill is required')),
+    // position: Yup.string().required('Position is required'),
+    // experienceMin: Yup.number().required('Minimum Experience is required').positive('Minimum Experience must be positive'),
+    // experienceMax: Yup.number()
+    //     .required('Maximum Experience is required')
+    //     .positive('Maximum Experience must be positive')
+    //     .moreThan(Yup.ref('experienceMin'), 'Maximum Experience must be greater than Minimum Experience'),
+    // location: Yup.string().required('Location is required'),
 });
 
 const initialValues = {
@@ -26,21 +26,66 @@ const initialValues = {
     qualifications: [''],
     responsibilities: [''],
     skills: [''],
-    position: '',
+    role: '',
     experienceMin: '',
     experienceMax: '',
     location: '',
+    employmentType: '',
+    applyLink: '',
 };
 
+
+
+const locations = {
+    HYDERABAD: 'Hyderabad',
+    BENGALURU: 'Bengaluru',
+    GURGAON: 'Gurgaon',
+    MUMBAI: 'Mumbai',
+    CHENNAI: 'Chennai',
+    PUNE: 'Pune',
+    DELHI: 'Delhi'
+}
+
+const employmentTypes = {
+    FULL_TIME: 'Full Time',
+    INTERNSHIP: 'Internship'
+}
+
+const roles = {
+    SOFT: 'Software Engineer',
+    SDE: 'SDE',
+    QA: 'Quality Analyst',
+    MARKETING_SPECIALIST: 'Marketing Specialist',
+    WEB_DESIGNER: 'Web Designer',
+    APP_DEVELOPER: 'App Developer',
+    DATA_ENGINEER: 'Data Engineer',
+    WEB_DEVELOPER: 'Web Developer'
+}
+
+
 const AddJobDetails = () => {
-    const [submitting, setSubmitting] = useState(false);
     const [companies, setCompanies] = useState([]);
+
+    const locationOptions = Object.entries(locations).map(([key, value]) => ({
+        value: value,
+        label: key
+    }));
+
+    const employmentTypeOptions = Object.entries(employmentTypes).map(([key, value]) => ({
+        value: value,
+        label: key
+    }));
+
+    const roleOptions = Object.entries(roles).map(([key, value]) => ({
+        value: value,
+        label: key
+    }));
 
 
 
     useEffect(() => {
         getCompanies();
-    })
+    }, [])
 
     const getCompanies = async () => {
         const response = await axios.get(`${API_BASE_URL}/getCompanies`);
@@ -55,28 +100,28 @@ const AddJobDetails = () => {
         }
     }
 
-    const handleSubmit = async (values, { setSubmitting }) => {
+    const handleSubmit = async (values) => {
         try {
-            setSubmitting(true);
             console.log(values)
             const response = await axios.post(`${API_BASE_URL}/addJob`, values);
             if (response.status == 200) {
                 console.log(response)
                 values = {
                     company: '',
-                    qualifications: [''],
-                    responsibilities: [''],
-                    skills: [''],
-                    position: '',
+                    qualifications: [],
+                    responsibilities: [],
+                    skills: [],
+                    role: '',
                     experienceMin: '',
                     experienceMax: '',
                     location: '',
                 }
             }
-        } catch (error) {
-            console.error('Error creating job:', error);
-        } finally {
-            setSubmitting(false);
+        }
+        catch (error) {
+            console.error('Error adding job:', error);
+        }
+        finally {
         }
     };
 
@@ -175,13 +220,31 @@ const AddJobDetails = () => {
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="position" className="block font-medium">Position</label>
-                            <Field
-                                name="position"
-                                type="text"
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            <label htmlFor="role" className="block font-medium">Role</label>
+                            <Select
+                                options={roleOptions}
+                                value={roleOptions.find(option => option.value === values.role)}
+                                onChange={option => setFieldValue('role', option.value)}
+                                onBlur={() => { }}
+                                placeholder="Select Role"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-opacity-50"
+                                isSearchable={true}
+                                name="role"
                             />
-                            <ErrorMessage name="position" component="p" className="text-red-600" />
+                        </div>
+
+                        <div className="mb-4">
+                            <label htmlFor="employmentType" className="block font-medium">employment Type</label>
+                            <Select
+                                options={employmentTypeOptions}
+                                value={employmentTypeOptions.find(option => option.value === values.employmentType)}
+                                onChange={option => setFieldValue('employmentType', option.value)}
+                                onBlur={() => { }}
+                                placeholder="Select Employment Type"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-opacity-50"
+                                isSearchable={true}
+                                name="employmentType"
+                            />
                         </div>
 
                         <div className="mb-4">
@@ -208,17 +271,30 @@ const AddJobDetails = () => {
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="location" className="block font-medium">Location</label>
-                            <Field
+                            <label htmlFor="location" className="block font-medium">Location Name</label>
+                            <Select
+                                options={locationOptions}
+                                value={locationOptions.find(option => option.value === values.location)}
+                                onChange={option => setFieldValue('location', option.value)}
+                                onBlur={() => { }}
+                                placeholder="Select Location"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-opacity-50"
+                                isSearchable={true}
                                 name="location"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="applyLink" className="block font-medium">Apply Link</label>
+                            <Field
+                                name="applyLink"
                                 type="text"
                                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             />
-                            <ErrorMessage name="location" component="p" className="text-red-600" />
+                            <ErrorMessage name="applyLink" component="p" className="text-red-600" />
 
                         </div>
 
-                        <Button type='submit'>{submitting ? 'Submitting...' : 'Submit'}</Button>
+                        <Button type='submit' >Submit</Button>
                     </Form>
                 )}
             </Formik>
