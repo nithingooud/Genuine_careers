@@ -7,9 +7,18 @@ import {
     NavbarToggle,
 } from "flowbite-react";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export function NavbarComponent() {
+
+    const [addJob, setAddJob] = useState(false)
+    useEffect(() => {
+        let data = sessionStorage.getItem("addJob");
+        if (data) {
+            setAddJob(true)
+        }
+    })
+
     return (
         <div style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: '#ffffff', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
             <Navbar fluid rounded >
@@ -19,10 +28,24 @@ export function NavbarComponent() {
                 </NavbarBrand>
                 <NavbarCollapse >
                     <NavbarLink href="/" >
-                        Home
+                        HOME
                     </NavbarLink>
-                    <NavbarLink href="/addJob" >Add Jobs</NavbarLink>
-                    <NavbarLink href="/addCompany" >Add Company</NavbarLink>
+                    <NavbarLink href="/interviewExperience" >
+                        INTERVIEW EXPERIENCES
+                    </NavbarLink>
+                    <NavbarLink href="/blogs" >
+                        BLOGS
+                    </NavbarLink>
+                    <NavbarLink href="/about">
+                        ABOUT US
+                    </NavbarLink>
+                    {addJob &&
+                        <>
+                            <NavbarLink href="/addJob" >Add Jobs</NavbarLink>
+                            <NavbarLink href="/addCompany" >Add Company</NavbarLink>
+                        </>
+
+                    }
 
                 </NavbarCollapse>
                 <div className="flex md:order-2 items-center">

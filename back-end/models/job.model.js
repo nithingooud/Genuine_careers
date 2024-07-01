@@ -37,6 +37,6 @@ const jobSchema = new mongoose.Schema({
     location: { type: String, enum: Object.values(locations) },
     employmentType: { type: String, enum: Object.values(employmentTypes) },
     applyLink: { type: String }
-}, Timestamp)
+}, { timestamps: true })
 
 mongoose.model('Job', jobSchema)

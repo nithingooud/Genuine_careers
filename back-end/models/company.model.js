@@ -18,6 +18,6 @@ const companySchema = new mongoose.Schema({
     website: { type: String },
     Revenue: { type: Number },
     sector: { type: String }
-})
+}, { timestamps: true })
 
 mongoose.model('Company', companySchema)

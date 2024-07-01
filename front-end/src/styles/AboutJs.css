@@ -1,0 +1,45 @@
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Adjust as needed */
+}
+
+.text-container {
+    flex: 1;
+    padding: 20px;
+    background-image: url('https://res.cloudinary.com/nithinmanda/image/upload/v1719732797/WhatsApp_Image_2024-06-30_at_12.59.55_PM_fhasxs.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    /* Adjust as needed */
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 5rem;
+    /* Adjust the size as needed */
+}
+
+h2 {
+    font-size: 2rem;
+    font-family: 'circular';
+    /* Adjust the size as needed */
+}
+
+p {
+    font-family: 'serif';
+    font-size: large;
+}
