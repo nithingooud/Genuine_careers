@@ -6,6 +6,7 @@ import { JobDetailsComponent } from './components/JobDetails';
 import AboutUsComponent from './components/AboutUs';
 import { FooterComponent } from './components/Footer'
 import AddJobDetails from './components/AddJob';
+import InterviewExperienceComponent from './components/InterviewExperience';
 import CompanyForm from './components/AddCompany';
 import { useState } from 'react';
 
@@ -25,6 +26,7 @@ function App() {
             <Route path='/job' element={<JobDetailsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
             <Route path='/about' element={<AboutUsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
             <Route path='/addJob' element={<AddJobDetails />} />
+            <Route path='/interviewExperience' element={<InterviewExperienceComponent />} />
             <Route path='/addCompany' element={<CompanyForm />} />
           </Routes>
         </main>

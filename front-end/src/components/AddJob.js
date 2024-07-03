@@ -102,10 +102,8 @@ const AddJobDetails = () => {
 
     const handleSubmit = async (values) => {
         try {
-            console.log(values)
             const response = await axios.post(`${API_BASE_URL}/addJob`, values);
             if (response.status == 200) {
-                console.log(response)
                 values = {
                     company: '',
                     qualifications: [],

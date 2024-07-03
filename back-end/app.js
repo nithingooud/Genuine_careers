@@ -9,7 +9,7 @@ app.use(cors())
 mongoose.connect('mongodb://localhost:27017')
 
 mongoose.connection.on('connected', () => {
-    console.log("mongo connected succesfully");
+    console.log("mongo connected successfully");
 })
 
 mongoose.connection.on('error', () => {
@@ -18,14 +18,13 @@ mongoose.connection.on('error', () => {
 
 require('./models/job.model')
 require('./models/company.model')
+require('./models/interviewExperience.model')
 
 app.use(require('./routes/job.route'))
+app.use(require('./routes/interviewExperience.route'))
 
 
-app.get('/', (req, res) => {
-    console.log("home")
-    res.send("Hello Wmorld")
-})
+
 
 app.listen(PORT, () => {
     console.log("server is running on port", PORT);
