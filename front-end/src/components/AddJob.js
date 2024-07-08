@@ -23,8 +23,8 @@ const validationSchema = Yup.object().shape({
 
 const initialValues = {
     company: '',
-    qualifications: [''],
-    responsibilities: [''],
+    qualifications: '',
+    responsibilities: '',
     skills: [''],
     role: '',
     experienceMin: '',
@@ -102,12 +102,16 @@ const AddJobDetails = () => {
 
     const handleSubmit = async (values) => {
         try {
+            console.log(values)
+            values.qualifications = values.qualifications.split('.');
+            values.responsibilities = values.responsibilities.split('.');
+
             const response = await axios.post(`${API_BASE_URL}/addJob`, values);
             if (response.status == 200) {
                 values = {
                     company: '',
-                    qualifications: [],
-                    responsibilities: [],
+                    qualifications: '',
+                    responsibilities: '',
                     skills: [],
                     role: '',
                     experienceMin: '',
@@ -171,49 +175,23 @@ const AddJobDetails = () => {
 
                         <div className="mb-4">
                             <label htmlFor="qualifications" className="block font-medium">Qualifications</label>
-                            <FieldArray name="qualifications">
-                                {({ push, remove }) => (
-                                    <div>
-                                        {values.qualifications.map((qualification, index) => (
-                                            <div key={index} className="flex items-center mb-2">
-                                                <Field
-                                                    name={`qualifications[${index}]`}
-                                                    type="text"
-                                                    className="mr-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                />
-                                                {index > 0 && (
-                                                    <button type="button" onClick={() => remove(index)} className="text-red-600 focus:outline-none">Remove</button>
-                                                )}
-                                            </div>
-                                        ))}
-                                        <button type="button" onClick={() => push('')} className="text-green-600 focus:outline-none">Add Qualification</button>
-                                    </div>
-                                )}
-                            </FieldArray>
+                            <Field
+                                name="qualifications"
+                                type="text"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+
                             <ErrorMessage name="qualifications" component="p" className="text-red-600" />
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="responsibilities" className="block font-medium">Responsibilities</label>
-                            <FieldArray name="responsibilities">
-                                {({ push, remove }) => (
-                                    <div>
-                                        {values.responsibilities.map((responsibility, index) => (
-                                            <div key={index} className="flex items-center mb-2">
-                                                <Field
-                                                    name={`responsibilities[${index}]`}
-                                                    type="text"
-                                                    className="mr-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                />
-                                                {index > 0 && (
-                                                    <button type="button" onClick={() => remove(index)} className="text-red-600 focus:outline-none">Remove</button>
-                                                )}
-                                            </div>
-                                        ))}
-                                        <button type="button" onClick={() => push('')} className="text-green-600 focus:outline-none">Add Responsibility</button>
-                                    </div>
-                                )}
-                            </FieldArray>
+
+                            <Field
+                                name="responsibilities"
+                                type="text"
+                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
                             <ErrorMessage name="responsibilities" component="p" className="text-red-600" />
                         </div>
 
