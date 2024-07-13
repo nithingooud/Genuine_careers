@@ -28,12 +28,6 @@ export function JobDetailsComponent() {
 
                         </div>
                         <div className="flex items-center gap-2">
-                            <Tooltip placement="left" content="share" arrow='false'>
-                                <a href={jobDetails?.applyLink || ''} style={{ cursor: 'pointer' }}>
-                                    <svg className="h-6 w-6 text-gray-700 border-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <circle cx="18" cy="5" r="3" />  <circle cx="6" cy="12" r="3" />  <circle cx="18" cy="19" r="3" />  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg>
-                                </a>
-                            </Tooltip>
-
                             <Button onClick={() => window.open(jobDetails?.applyLink, '_blank')}>Apply</Button>
                         </div>
                     </div>

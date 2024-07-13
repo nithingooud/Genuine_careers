@@ -1,72 +1,69 @@
-
-import {
-    Navbar,
-    NavbarBrand,
-    NavbarCollapse,
-    NavbarLink,
-    NavbarToggle,
-} from "flowbite-react";
-
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export function NavbarComponent() {
+    const [addJob, setAddJob] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const [addJob, setAddJob] = useState(false)
     useEffect(() => {
         let data = sessionStorage.getItem("addJob");
         if (data) {
-            setAddJob(true)
+            setAddJob(true);
         }
-    })
+    }, []);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <div style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: '#ffffff', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-            <Navbar fluid rounded >
-                <NavbarBrand href="/">
-                    <img className="w-10 h-10 md:w-20 md:h-20 object-cover rounded-full mr-2" src="https://i.ibb.co/v4Nr5ft/Screenshot-2024-06-22-at-9-38-23-PM.png" alt="Screenshot-2024-06-22-at-9-38-23-PM" border="0"></img>
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Genuine Careers</span>
-                </NavbarBrand>
-                <NavbarCollapse >
-                    <NavbarLink href="/" >
-                        HOME
-                    </NavbarLink>
-                    <NavbarLink href="/interviewExperience" >
-                        INTERVIEW EXPERIENCES
-                    </NavbarLink>
-                    <NavbarLink href="/blogs" >
-                        BLOGS
-                    </NavbarLink>
-                    <NavbarLink href="/about">
-                        ABOUT US
-                    </NavbarLink>
-                    {addJob &&
-                        <>
-                            <NavbarLink href="/addJob" >Add Jobs</NavbarLink>
-                            <NavbarLink href="/addCompany" >Add Company</NavbarLink>
-                        </>
-
-                    }
-
-                </NavbarCollapse>
-                <div className="flex md:order-2 items-center">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0 0 48 48">
-                            <path fill="#29b6f6" d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"></path><path fill="#fff" d="M33.95,15l-3.746,19.126c0,0-0.161,0.874-1.245,0.874c-0.576,0-0.873-0.274-0.873-0.274l-8.114-6.733 l-3.97-2.001l-5.095-1.355c0,0-0.907-0.262-0.907-1.012c0-0.625,0.933-0.923,0.933-0.923l21.316-8.468 c-0.001-0.001,0.651-0.235,1.126-0.234C33.667,14,34,14.125,34,14.5C34,14.75,33.95,15,33.95,15z"></path><path fill="#b0bec5" d="M23,30.505l-3.426,3.374c0,0-0.149,0.115-0.348,0.12c-0.069,0.002-0.143-0.009-0.219-0.043 l0.964-5.965L23,30.505z"></path><path fill="#cfd8dc" d="M29.897,18.196c-0.169-0.22-0.481-0.26-0.701-0.093L16,26c0,0,2.106,5.892,2.427,6.912 c0.322,1.021,0.58,1.045,0.58,1.045l0.964-5.965l9.832-9.096C30.023,18.729,30.064,18.416,29.897,18.196z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <NavbarToggle barIcon={() => (<svg className="h-8 w-8 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        )} />
-                    </div>
-
-
-
+        <nav className="bg-white border-gray-200 dark:bg-gray-900">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://i.ibb.co/v4Nr5ft/Screenshot-2024-06-22-at-9-38-23-PM.png" className="h-8 rounded-full" alt="Genuine Careers Logo" />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Genuine Careers</span>
+                </Link>
+                <button
+                    onClick={toggleMenu}
+                    type="button"
+                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default"
+                    aria-expanded={isMenuOpen}
+                >
+                    <span className="sr-only">Open main menu</span>
+                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
+                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <Link to="/" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/interviewExperience" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Interview Experience</Link>
+                        </li>
+                        <li>
+                            <Link to="/services" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</Link>
+                        </li>
+                        <li>
+                            <Link to="/about" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About Us</Link>
+                        </li>
+                        {addJob && (
+                            <>
+                                <li>
+                                    <Link to="/addJob" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Jobs</Link>
+                                </li>
+                                <li>
+                                    <Link to="/addCompany" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Company</Link>
+                                </li>
+                            </>
+                        )}
+                    </ul>
                 </div>
-            </Navbar>
-        </div>
+            </div>
+        </nav>
     );
 }
 
-export default NavbarComponent
+export default NavbarComponent;

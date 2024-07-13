@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
         <NavbarComponent />
-        <main className="flex-grow pt-16">
+        <main className="flex-grow">
           <Routes>
             <Route path='/' element={<HomeComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
             <Route path='/job' element={<JobDetailsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
