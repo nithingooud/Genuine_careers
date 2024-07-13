@@ -24,6 +24,14 @@ export function HomeComponent({ onDrawerOpen, onDrawerClose }) {
     const [filtersData, setFiltersData] = useState(null);
     const [totalFilteredItems, setTotalFilteredItems] = useState(0);
 
+    useEffect(() => {
+        const lastPage = localStorage.getItem('lastJobListingPage');
+        if (lastPage) {
+            setCurrentPage(Number(lastPage));
+            localStorage.removeItem('lastJobListingPage');
+        }
+    }, []);
+
 
     // const filtersData = useRef()
     const theme = useTheme();
@@ -116,7 +124,7 @@ export function HomeComponent({ onDrawerOpen, onDrawerClose }) {
                     <div className="d-flex flex-row align-items-center justify-content-center">
                         {jobsData.length == 0 ? renderWrongInput() : jobsData.map(item => (
                             <JobCardComponent key={item._id} CompanyName={item?.company?.companyName || ''} Location={item?.location || ''} logo={item?.company?.logo || ''}
-                                Position={item?.role || ''} Experience={item?.experience || ''} jobDetails={item} />
+                                Position={item?.role || ''} Experience={item?.experience || ''} jobDetails={item} currentPage={currentPage} />
                         ))}
                     </div>
                     <div className="pagination-container">

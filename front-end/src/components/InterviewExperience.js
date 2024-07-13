@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { API_BASE_URL } from "../environment";
 import axios from 'axios'
-import Card from "../common/Card";
+import Card from "../common/InterviewCard";
 import '../styles/interview.css'
 
 import { Button, Modal } from "flowbite-react";
@@ -188,8 +188,8 @@ const InterviewExperienceComponent = () => {
                     </Modal.Body>
                 </Modal>
             </div>
-            <div style={{ marginTop: '2rem' }}>
-                <div className="grid gap-4">
+            <div className="lg:mx-12 mt-2">
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
                     {interviewExperiences.map((interviewExperience, index) => (
                         <Card key={index} interviewExperienceDetails={interviewExperience} />
                     ))}

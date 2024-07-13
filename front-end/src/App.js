@@ -7,6 +7,7 @@ import AboutUsComponent from './components/AboutUs';
 import { FooterComponent } from './components/Footer'
 import AddJobDetails from './components/AddJob';
 import InterviewExperienceComponent from './components/InterviewExperience';
+import ServicesComponent from './components/Services'
 import CompanyForm from './components/AddCompany';
 import { useState } from 'react';
 
@@ -20,7 +21,7 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
         <NavbarComponent />
-        <main className="flex-grow">
+        <main className="flex-grow pt-16">
           <Routes>
             <Route path='/' element={<HomeComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
             <Route path='/job' element={<JobDetailsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
@@ -28,6 +29,7 @@ function App() {
             <Route path='/addJob' element={<AddJobDetails />} />
             <Route path='/interviewExperience' element={<InterviewExperienceComponent />} />
             <Route path='/addCompany' element={<CompanyForm />} />
+            <Route path='/services' element={<ServicesComponent />} />
           </Routes>
         </main>
         <FooterComponent isDrawerOpen={isDrawerOpen} />

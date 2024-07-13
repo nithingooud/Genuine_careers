@@ -8,22 +8,13 @@ import { useLocation } from 'react-router-dom';
 export function JobDetailsComponent() {
     const location = useLocation();
     const jobDetails = location.state?.jobDetails;
+    const currentPage = location.state?.currentPage;
 
     useEffect(() => {
-        console.log(jobDetails)
-    }, [])
-
-    const handleApply = () => {
-        // Perform any necessary actions
-        window.location.href = 'your-url-here';
-    };
-
-    const getSkillColor = (skill) => {
-        const colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
-        const hash = skill.split('').reduce((acc, char) => char.charCodeAt(0) + acc, 0);
-        return colors[hash % colors.length];
-    };
-
+        if (currentPage) {
+            localStorage.setItem('lastJobListingPage', currentPage);
+        }
+    }, [currentPage]);
 
     return (
         <div className="py-4" style={{ backgroundColor: 'rgb(241 245 249)' }}>
@@ -31,7 +22,7 @@ export function JobDetailsComponent() {
                 <div className="job-detail">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <img className="w-10 h-10 md:w-20 md:h-20 object-cover rounded-full" alt='logo'
+                            <img className="w-5 h-5 md:w-10 md:h-10 object-cover rounded-full" alt='logo'
                                 src={jobDetails?.company?.logo || ''} />
                             <div style={{ fontFamily: 'math', marginTop: '0.2rem', fontWeight: 'bolder' }}>{jobDetails?.company?.companyName || ''}</div>
 

@@ -8,7 +8,6 @@ router.use(bodyParser.json());
 
 router.post('/addInterviewExperience', async (req, res) => {
     try {
-        console.log(req.body)
         const {
             companyName,
             candidateName,
@@ -26,7 +25,6 @@ router.post('/addInterviewExperience', async (req, res) => {
             yoe: yoe,
             youtubeId: youtubeId
         };
-        console.log("interview", interviewDetails)
         let response = await InterviewExperience.create(interviewDetails);
         res.json(response)
     } catch (err) {
@@ -38,7 +36,6 @@ router.post('/addInterviewExperience', async (req, res) => {
 router.post('/interviewExperiences', async (req, res) => {
     try {
         let query = {}
-        console.log(req.body)
         if (req.body.company) {
             query = {
                 ...(req.body.company != "" ? { company: req.body.company } : {})

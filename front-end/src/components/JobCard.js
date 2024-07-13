@@ -4,13 +4,13 @@ import { Button } from "flowbite-react";
 import { useNavigate } from 'react-router-dom';
 
 
-const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, jobDetails }) => {
+const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, jobDetails, currentPage }) => {
 
     const navigate = useNavigate();
 
 
     const openJob = (jobDetails) => {
-        navigate('/job', { state: { jobDetails } });
+        navigate('/job', { state: { jobDetails, currentPage } });
     };
 
     const getSkillColor = (skill) => {
@@ -19,34 +19,34 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
     };
     return (
         <Card className="max-w-2xl mx-auto mb-2 shadow-md bg-white rounded-lg overflow-hidden">
-            <div className="flex items-center" style={{ justifyContent: 'space-between' }}>
+            <div className="flex items-center justify-between" >
                 <img className="w-20 h-20 md:w-20 md:h-20 object-cover rounded" alt='logo'
                     src={logo} />
                 <div>
-                    <Button outline gradientDuoTone="cyanToBlue" onClick={() => openJob(jobDetails)}>View Job</Button>
+                    <Button outline gradientDuoTone="purpleToBlue" onClick={() => openJob(jobDetails)}>
+                        View Job
+                    </Button>
                 </div>
             </div>
             <div className="flex items-center">
-                <div className="ml-4 flex-1">
-                    <div className="flex items-center" style={{ justifyContent: 'space-between' }}>
-                        <p className="text-gray-700 dark:text-gray-400" style={{ fontSize: 'x-large', fontFamily: 'math' }}>{Position}</p>
+                <div className="ml-1 flex-1">
+                    <div className="flex items-center justify-between">
+                        <p class="subpixel-antialiased text-2xl">{Position}</p>
                         <div className="flex items-center gap-1">
                             <p className="text-sm text-gray-700 dark:text-gray-400">{Experience?.minimum}-{Experience?.maximum} years</p>
-
                             <svg className="h-4 w-4 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                         </div>
-
                     </div>
-                    <div className="flex items-center mb-2" style={{ justifyContent: 'space-between' }}>
-                        <h5 className="text-sm font-medium text-gray-900 dark:text-gray-100" style={{ fontFamily: 'none', fontWeight: 'normal', fontSize: 'medium' }}>{CompanyName}</h5>
+                    <div className="flex items-center justify-between" >
+                        <p class="subpixel-antialiased text-md">{CompanyName}</p>
                         <div className="flex items-center gap-1">
                             <p className="text-sm text-gray-700 dark:text-gray-400">{Location}</p>
                             <svg className="h-4 w-4 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <polygon points="3 11 22 2 13 21 11 13 3 11" /></svg>
                         </div>
                     </div>
-                    <div className="flex items-center" style={{ justifyContent: 'space-between' }}>
+                    <div className="flex items-center justify-between" >
                         <div className="flex flex-wrap gap-2 mt-4">
                             {(jobDetails?.skills || []).map((skill) => (
                                 <Badge color={getSkillColor(skill)}>{skill}</Badge>
