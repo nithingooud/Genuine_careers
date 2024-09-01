@@ -53,7 +53,6 @@ export function HomeComponent({ onDrawerOpen, onDrawerClose }) {
     const getJobsData = async () => {
         setLoading(true);
         try {
-            console.log(filtersData)
             const response = await axios.post(`${API_BASE_URL}/jobsPosted`, { page: currentPage, filters: filtersData });
             if (response.status === 200) {
                 setJobsData(response.data.jobs);

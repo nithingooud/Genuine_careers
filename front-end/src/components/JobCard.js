@@ -2,6 +2,7 @@ import { Card, Badge } from "flowbite-react";
 import React from "react";
 import { Button } from "flowbite-react";
 import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 
 
 const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, jobDetails, currentPage }) => {
@@ -10,7 +11,11 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
 
 
     const openJob = (jobDetails) => {
-        navigate('/job', { state: { jobDetails, currentPage } });
+        const queryParams = queryString.stringify({
+            id: jobDetails._id,
+            page: currentPage
+        });
+        navigate(`/job?${queryParams}`, { state: { jobDetails, currentPage } });
     };
 
     const getSkillColor = (skill) => {

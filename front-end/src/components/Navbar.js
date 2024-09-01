@@ -20,7 +20,7 @@ export function NavbarComponent() {
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="https://i.ibb.co/v4Nr5ft/Screenshot-2024-06-22-at-9-38-23-PM.png" className="h-8 rounded-full" alt="Genuine Careers Logo" />
+                    <img src="https://res.cloudinary.com/nithinmanda/image/upload/v1721719376/Screenshot_2024-06-22_at_9.38.23_PM_t4sjco.png" className="h-8 rounded-full" alt="Genuine Careers Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Genuine Careers</span>
                 </Link>
                 <button

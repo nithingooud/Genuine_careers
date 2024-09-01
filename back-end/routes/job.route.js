@@ -141,6 +141,15 @@ router.post('/addJob', async (req, res) => {
     }
 })
 
+router.post('/job', async (req, res) => {
+    try {
+        const jobDetails = await Job.findById(req.body._id).populate('company');
+        res.json(jobDetails)
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+})
+
 
 //to create a company
 router.post('/addCompany', async (req, res) => {
