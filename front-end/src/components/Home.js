@@ -1,164 +1,90 @@
-import React, { useEffect } from "react";
-import JobCardComponent from "./JobCard";
-import { Pagination } from "flowbite-react";
-import { useState } from "react";
-import '../styles/Home.css'
-import axios from 'axios'
-import { API_BASE_URL } from '../environment';
-import { Fab } from "@mui/material";
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Drawer } from "flowbite-react";
-import FiltersComponent from "./Filters";
-import { wrongInputAnimation } from "../styles/imagePath";
-import Lottie from 'react-lottie'
 
+import { Button, Kbd, Badge } from "flowbite-react";
+import { HiShoppingCart } from "react-icons/hi";
+import { FaRupeeSign } from "react-icons/fa";
+import { MdOutlineReviews, MdOutlineSearch } from "react-icons/md";
+import { SiGooglemeet } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
 
-export function HomeComponent({ onDrawerOpen, onDrawerClose }) {
+const HomeComponent = () => {
+    const navigate = useNavigate();
 
-    const [jobsData, setJobsData] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [loading, setLoading] = useState(false);
-    const [filtersData, setFiltersData] = useState(null);
-    const [totalFilteredItems, setTotalFilteredItems] = useState(0);
-
-    useEffect(() => {
-        const lastPage = localStorage.getItem('lastJobListingPage');
-        if (lastPage) {
-            setCurrentPage(Number(lastPage));
-            localStorage.removeItem('lastJobListingPage');
-        }
-    }, []);
-
-
-    // const filtersData = useRef()
-    const theme = useTheme();
-    const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-    const [isOpen, setIsOpen] = useState(false);
-    const handleClose = () => setIsOpen(false);
-
-    useEffect(() => {
-        getJobsData();
-    }, [currentPage, filtersData])
-
-    const updateTotalPages = (totalItems) => {
-        const itemsPerPage = 5;
-        const pages = Math.ceil(totalItems / itemsPerPage);
-        setTotalPages(pages);
-    }
-
-    const getJobsData = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.post(`${API_BASE_URL}/jobsPosted`, { page: currentPage, filters: filtersData });
-            if (response.status === 200) {
-                setJobsData(response.data.jobs);
-                setTotalFilteredItems(response.data.totalFilteredCount);
-                updateTotalPages(response.data.totalFilteredCount);
-                scrollToTop();
-            } else {
-            }
-        } catch (error) {
-            console.error('Error fetching jobs:', error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    const goToNotes = () => {
+        navigate("/handwritten-notes"); // Navigates to the route in the same tab
     };
-
-    const onPageChange = (page) => {
-        setCurrentPage(page)
-    };
-
-    const handleFiltersSubmit = (formData) => {
-        handleClose();
-        setFiltersData(formData);
-    };
-
-    const renderWrongInput = () => {
-        const defaultOptions = {
-            loop: true,
-            autoplay: true,
-            animationData: wrongInputAnimation,
-            rendererSettings: {
-                preserveAspectRatio: "xMidYMid slice"
-            }
-        };
-        return (
-            <div className='flex flex-col  items-center w-full h-screen'>
-                <div className="w-full max-w-lg">
-                    <Lottie
-                        options={defaultOptions}
-                        height="100%"
-                        width="100%"
-                    />
-                </div>
-                <div className="text-center mt-8">
-                    <h2 className="text-3xl font-bold mb-2 font-sans text-gray-800">
-                        No Jobs Found
-                    </h2>
-                    <p className="text-xl font-light font-serif text-gray-600">
-                        Please try adjusting your search criteria.
-                    </p>
-                </div>
-            </div>
-        )
-
-    }
 
     return (
-        <div className="p-4" style={{ backgroundColor: 'rgb(241 245 249)' }}>
-            {loading && jobsData.length == 0 ? <div>Loading...</div> :
-                <>
-                    <div className="d-flex flex-row align-items-center justify-content-center">
-                        {jobsData.length == 0 ? renderWrongInput() : jobsData.map(item => (
-                            <JobCardComponent key={item._id} CompanyName={item?.company?.companyName || ''} Location={item?.location || ''} logo={item?.company?.logo || ''}
-                                Position={item?.role || ''} Experience={item?.experience || ''} jobDetails={item} currentPage={currentPage} />
-                        ))}
+        <div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8" >
+                <div class="max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                    <div className="flex flex-col justify-center items-center ">
+                        <img loading="lazy" decoding="async" width="150" height="150" src="https://codewithcurious.com/wp-content/uploads/2024/04/3-150x150.png.webp" class="attachment-thumbnail size-thumbnail wp-image-13889" alt="" srcset="https://codewithcurious.com/wp-content/uploads/2024/04/3-150x150.png.webp 150w, https://codewithcurious.com/wp-content/uploads/2024/04/3-300x300.png.webp 300w, https://codewithcurious.com/wp-content/uploads/2024/04/3-1024x1024.png.webp 1024w, https://codewithcurious.com/wp-content/uploads/2024/04/3-768x768.png.webp 768w, https://codewithcurious.com/wp-content/uploads/2024/04/3-600x600.png.webp 600w, https://codewithcurious.com/wp-content/uploads/2024/04/3.png.webp 1080w" sizes="(max-width: 150px) 100vw, 150px"></img>
+                        <h5 class="flex justify-center mb-1 text-2xl font-bold">Coding Hand Written Notes</h5>
+                        <a onClick={goToNotes}>
+                            <Button outline gradientDuoTone="purpleToBlue">
+                                <div className="flex items-center justify-between">
+                                    <HiShoppingCart className="mr-2" />
+                                    <span>Read More</span>
+                                </div>
+                            </Button>
+                        </a>
                     </div>
-                    <div className="pagination-container">
-                        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} showIcons />
-                    </div>
-                </>
-            }
-            <Fab
-                color="primary"
-                aria-label="add"
-                sx={{
-                    position: 'fixed',
-                    bottom: '6rem',
-                    right: '2rem',
-                    zIndex: (theme) => theme.zIndex.drawer + 1
-                }}
-                onClick={() => setIsOpen(true)}
-            >
-                <FilterAltIcon />
-            </Fab>
-            <div>
-                <Drawer open={isOpen} onClose={() => {
-                    handleClose();
-                    onDrawerClose();
-                }} style={{
-                    marginTop: '3rem',
-                    height: 'calc(100% - 3rem)'
-                }}>
-                    <Drawer.Header title="Filters" />
-                    <Drawer.Items>
-                        <FiltersComponent onSubmit={handleFiltersSubmit} />
-                    </Drawer.Items>
-                </Drawer>
-            </div>
-        </div >
-    );
+                </div>
+                <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div className="flex flex-col justify-center items-center ">
+                        {/* <img loading="lazy" decoding="async" width="150" height="150" src={{ svg_files.JOBS }} sizes="(max-width: 150px) 100vw, 150px"></img> */}
 
+                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Coding Hand Written Notes</h5>
+                        <a href="https://wa.link/tppm1a">
+                            <Button outline gradientDuoTone="purpleToBlue">
+                                <div className="flex items-center justify-between">
+                                    <HiShoppingCart className="mr-2" />
+                                    <span>Read More</span>
+                                </div>
+                            </Button>
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <MdOutlineReviews className="h-10 w-10 mb-2" />
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Resume Review</h5>
+                    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">We will review your resume and provide free templates which are ARS Friendly
+                    </p>
+                    <div className="flex items-center justify-between">
+                        <Badge color="warning" className="text-sm">60 mins</Badge>
+                        <Kbd className=" flex items-center justify-between text-lg font-semibold"><FaRupeeSign /> 599</Kbd>
+                        <a href="https://wa.link/fl9tq7">
+                            <Button outline gradientDuoTone="purpleToBlue">
+                                <div className="flex items-center justify-between">
+                                    <HiShoppingCart className="mr-2" />
+                                    <span>Book Now</span>
+                                </div>
+                            </Button>
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <SiGooglemeet className="h-10 w-10 mb-2" />
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">1:1</h5>
+                    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">You can discuss about anything related to tech and Education.
+                    </p>
+                    <div className="flex items-center justify-between">
+                        <Badge color="warning" className="text-sm">60 mins</Badge>
+                        <Kbd className=" flex items-center justify-between text-lg font-semibold"><FaRupeeSign /> 899</Kbd>
+                        <a href="https://wa.link/kzywic">
+                            <Button outline gradientDuoTone="purpleToBlue">
+                                <div className="flex items-center justify-between">
+                                    <HiShoppingCart className="mr-2" />
+                                    <span>Book Now</span>
+                                </div>
+                            </Button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    )
 }
+
+export default HomeComponent

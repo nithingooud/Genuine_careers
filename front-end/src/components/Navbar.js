@@ -20,8 +20,12 @@ export function NavbarComponent() {
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="https://res.cloudinary.com/nithinmanda/image/upload/v1721719376/Screenshot_2024-06-22_at_9.38.23_PM_t4sjco.png" className="h-8 rounded-full" alt="Genuine Careers Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Genuine Careers</span>
+                    <img src="https://res.cloudinary.com/nithinmanda/image/upload/v1725193913/Screenshot_2024-06-22_at_1.05.48_PM_wgt2r5.png" className="h-12 rounded-full" alt="Genuine Careers Logo" />
+                    <div className="flex flex-col items-start">
+                        <span className="text-2xl font-bold dark:text-white">developer.nithin</span>
+                        <span className="text-sm text-gray-500">Let's develop together</span>
+                    </div>
+
                 </Link>
                 <button
                     onClick={toggleMenu}
@@ -41,8 +45,11 @@ export function NavbarComponent() {
                             <Link to="/" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home</Link>
                         </li>
                         <li>
-                            <Link to="/interviewExperience" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Interview Experience</Link>
+                            <Link to="/jobs" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Jobs</Link>
                         </li>
+                        {/* <li>
+                            <Link to="/interviewExperience" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Interview Experience</Link>
+                        </li> */}
                         <li>
                             <Link to="/services" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</Link>
                         </li>
