@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { Button, Card } from 'flowbite-react'
 import { Badge } from "flowbite-react";
-import '../styles/jobDetails.css'
+import '../../styles/jobDetails.css'
 import { useLocation, useSearchParams } from 'react-router-dom';
 import axios from 'axios'
-import { API_BASE_URL } from '../environment';
+import { API_BASE_URL } from '../../environment';
 
 
 export function JobDetailsComponent() {

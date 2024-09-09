@@ -125,7 +125,7 @@ const BookContent = () => {
                     </div>
                 </div>
 
-                <div className=' p-6 m-6'>
+                <div className='p-6 m-6'>
                     <Blockquote>
                         {HandWrittenNotes[currentBook].description}
                     </Blockquote>
@@ -137,7 +137,20 @@ const BookContent = () => {
                             <List.Item>{item}</List.Item>
                         ))}
                     </List>
+                    <div>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                            <Badge color="warning" size="sm">Contents</Badge>
+                        </div>
+                        <List>
+                            {HandWrittenNotes[currentBook].contents.map(item => (
+                                <List.Item>{item}</List.Item>
+                            ))}
+                        </List>
+                    </div>
                 </div>
+
+                {/* Syllabus */}
+
 
             </div>
         </div>

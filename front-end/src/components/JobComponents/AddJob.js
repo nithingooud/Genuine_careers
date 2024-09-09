@@ -3,7 +3,7 @@ import { Formik, FieldArray, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button } from 'flowbite-react';
 import axios from 'axios'
-import { API_BASE_URL } from '../environment';
+import { API_BASE_URL } from '../../environment';
 import Select from 'react-select';
 
 

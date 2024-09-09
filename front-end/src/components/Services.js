@@ -4,10 +4,6 @@ import { BsPersonVideo3 } from "react-icons/bs";
 import { FaRupeeSign } from "react-icons/fa";
 import { MdOutlineTipsAndUpdates, MdOutlineReviews } from "react-icons/md";
 import { SiGooglemeet } from "react-icons/si";
-
-
-
-
 const ServicesComponent = () => {
 
     return (

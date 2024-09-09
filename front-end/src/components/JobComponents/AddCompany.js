@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import { API_BASE_URL } from '../environment';
+import { API_BASE_URL } from '../../environment';
 
 const CompanyForm = () => {
     const [formData, setFormData] = useState({

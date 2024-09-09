@@ -24,25 +24,27 @@ const HandWrittenNotes = () => {
 
 
     return (
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8" style={{ backgroundColor: 'rgb(241 245 249)' }}>
-            {books.map((book, index) =>
-            (
-                <div key={index} class="p-3 m-6 bg-white border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg">
-                    <div className="flex flex-col justify-center items-center ">
-                        <img alt="Java Book" className="w-48 h-64 object-cover rounded-lg" src={book.link}></img>
-                        <a onClick={() => handleNavigation(book)}>
-                            <Button gradientMonochrome="lime">
-                                <div className="flex items-center justify-between">
-                                    <HiDocumentDownload className="mr-2" />
-                                    <span>Read More</span>
-                                </div>
-                            </Button>
-                        </a>
+        <div className="h-screen" style={{ backgroundColor: 'rgb(241 245 249)' }}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8">
+                {books.map((book, index) =>
+                (
+                    <div key={index} class="p-3 m-6 bg-white border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                        <div className="flex flex-col justify-center items-center ">
+                            <img alt="Java Book" className="w-48 h-64 object-cover rounded-lg" src={book.link}></img>
+                            <a onClick={() => handleNavigation(book)}>
+                                <Button gradientMonochrome="lime">
+                                    <div className="flex items-center justify-between">
+                                        <HiDocumentDownload className="mr-2" />
+                                        <span>Read More</span>
+                                    </div>
+                                </Button>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            )
-            )}
+                )
+                )}
 
+            </div>
         </div>
     )
 }

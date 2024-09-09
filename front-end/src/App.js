@@ -1,14 +1,14 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavbarComponent from './components/Navbar';
-import { JobsComponent } from './components/Jobs';
-import { JobDetailsComponent } from './components/JobDetails';
+import { JobsComponent } from './components/JobComponents/Jobs';
+import { JobDetailsComponent } from './components/JobComponents/JobDetails';
 import AboutUsComponent from './components/AboutUs';
 import { FooterComponent } from './components/Footer'
-import AddJobDetails from './components/AddJob';
+import AddJobDetails from './components/JobComponents/AddJob';
 import InterviewExperienceComponent from './components/InterviewExperience';
 import ServicesComponent from './components/Services'
-import CompanyForm from './components/AddCompany';
+import CompanyForm from './components/JobComponents/AddCompany';
 import { useState } from 'react';
 import HomeComponent from './components/Home';
 import HandWrittenNotes from './components/handWrittenNotes/HandWrittenNotes';

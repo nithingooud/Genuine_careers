@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import JobCardComponent from "./JobCard";
 import { Pagination } from "flowbite-react";
 import { useState } from "react";
-import '../styles/Home.css'
+import '../../styles/Home.css'
 import axios from 'axios'
-import { API_BASE_URL } from '../environment';
+import { API_BASE_URL } from '../../environment';
 import { Fab } from "@mui/material";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Drawer } from "flowbite-react";
 import FiltersComponent from "./Filters";
-import { wrongInputAnimation } from "../styles/imagePath";
+import { wrongInputAnimation } from "../../styles/imagePath";
 import Lottie from 'react-lottie'
 
 
