@@ -133,7 +133,7 @@ const BookContent = () => {
                         <Badge color="warning" size="sm">Benefits</Badge>
                     </div>
                     <List>
-                        {HandWrittenNotes[currentBook].benefits.map(item => (
+                        {HandWrittenNotes[currentBook]?.benefits.map(item => (
                             <List.Item>{item}</List.Item>
                         ))}
                     </List>
@@ -142,7 +142,7 @@ const BookContent = () => {
                             <Badge color="warning" size="sm">Contents</Badge>
                         </div>
                         <List>
-                            {HandWrittenNotes[currentBook].contents.map(item => (
+                            {HandWrittenNotes[currentBook]?.contents.map(item => (
                                 <List.Item>{item}</List.Item>
                             ))}
                         </List>

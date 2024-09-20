@@ -4,7 +4,7 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-
 
 export function FooterComponent({ isDrawerOpen }) {
     return (
-        <div className="h-8 bg-gray-800 flex items-center justify-center">
+        <div className="h-8 bg-gray-800 flex items-center justify-center mb-0 pb-0">
             <div className="w-full flex items-center justify-between mx-4">
                 <Footer.Copyright href="#" by="All rights reserved developer.nithin" year={2024} />
                 <div className="flex gap-2 sm:mt-0 sm:justify-center">

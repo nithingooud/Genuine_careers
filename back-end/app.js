@@ -6,7 +6,7 @@ const cors = require('cors');
 
 app.use(cors())
 
-mongoose.connect('mongodb://localhost:27017')
+mongoose.connect('mongodb://localhost:27017/developer-nithin')
 
 mongoose.connection.on('connected', () => {
     console.log("mongo connected successfully");
