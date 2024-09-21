@@ -8,7 +8,7 @@ const ServicesComponent = () => {
 
     return (
         <>
-            <div id="sticky-banner" class="fixed  start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+            {/* <div id="sticky-banner" class="fixed  start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                 <div class="flex items-center mx-auto">
                     <p class="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
                         <span class="inline-flex p-1 me-3 bg-gray-200 rounded-full dark:bg-gray-600 w-6 h-6 items-center justify-center flex-shrink-0">
@@ -20,8 +20,8 @@ const ServicesComponent = () => {
                         <span>Want to build a crazy websites <a href="https://wa.link/wt21ju" class="inline font-medium text-blue-600 underline dark:text-blue-500 underline-offset-2 decoration-600 dark:decoration-500 decoration-solid hover:no-underline">Let's Discuss</a></span>
                     </p>
                 </div>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-8" style={{ marginTop: '5rem' }}>
+            </div> */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-8 mt-8" >
                 <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <BsPersonVideo3 className="h-10 w-10 mb-2" />
                     <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Mock Interview</h5>

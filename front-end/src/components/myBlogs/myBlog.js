@@ -63,7 +63,7 @@ const MyBlogsPage = () => {
     }
 
     return (
-        <div className="" style={{ backgroundColor: 'rgb(241 245 249)' }}>
+        <div>
             <div className="container mx-auto py-4 max-w-2xl mx-auto" >
                 {/* <h1 className="text-4xl font-bold text-center bg-indigo-100 mb-8">All Blogs</h1> */}
 
