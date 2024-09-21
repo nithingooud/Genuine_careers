@@ -19,9 +19,11 @@ mongoose.connection.on('error', () => {
 require('./models/job.model')
 require('./models/company.model')
 require('./models/interviewExperience.model')
+require('./models/blogs.model')
 
 app.use(require('./routes/job.route'))
 app.use(require('./routes/interviewExperience.route'))
+app.use(require('./routes/blogs.route'))
 
 
 

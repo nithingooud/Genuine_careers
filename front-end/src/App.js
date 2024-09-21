@@ -13,6 +13,8 @@ import HomeComponent from './components/Home';
 import HandWrittenNotes from './components/handWrittenNotes/HandWrittenNotes';
 import BookContent from './components/handWrittenNotes/BookContent';
 import MyBlogPage from './components/myBlogs/myBlog';
+import AddBlog from './components/myBlogs/addBlog';
+import BlogDetails from './components/myBlogs/blogComponent';
 
 
 function App() {
@@ -27,12 +29,15 @@ function App() {
             <Route path='/job' element={<JobDetailsComponent />} />
             <Route path='/about' element={<AboutUsComponent />} />
             <Route path='/addJob' element={<AddJobDetails />} />
+            <Route path='/addBlog' element={<AddBlog />} />
             <Route path='/interviewExperience' element={<InterviewExperienceComponent />} />
             <Route path='/addCompany' element={<CompanyForm />} />
             <Route path='/services' element={<ServicesComponent />} />
             <Route path="/handwritten-notes" element={<HandWrittenNotes />} />
             <Route path="/handwritten-book" element={<BookContent />} />
             <Route path="/my-blogs" element={<MyBlogPage />} />
+            <Route path="/blog-component" element={<BlogDetails />} />
+
           </Routes>
         </main>
         {/* <FooterComponent /> */}

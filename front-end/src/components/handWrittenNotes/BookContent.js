@@ -1,6 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { API_BASE_URL } from '../../environment';
-import { useEffect } from "react";
+
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { HandWrittenNotes } from '../../common/constants';
@@ -69,7 +68,7 @@ const BookContent = () => {
     );
 
     return (
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mt-3">
             <div className='bg-slate-100 px-4'>
                 <span className="text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                     {currentBook} HandWritten Notes

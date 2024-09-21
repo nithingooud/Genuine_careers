@@ -1,19 +1,36 @@
 import { Button, Carousel } from "flowbite-react";
 import { HiDocumentDownload } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { Notes } from "../../common/constants";
+import { Notes, notesType } from "../../common/constants";
 import queryString from 'query-string';
-
-
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
 
 const HandWrittenNotes = () => {
-    const navigate = useNavigate();
 
-    const books = [
+    const codingBooks = [
         { bookName: Notes.Java, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725377160/developer.nithin/JAVA_ytcq5h.jpg' },
         { bookName: Notes.Python, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725454935/developer.nithin/python.jpg' },
         { bookName: Notes.Cpp, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725457305/developer.nithin/Cpp.jpg' },
     ]
+
+    const aptitudeBooks = [
+        { bookName: Notes.Aptitude, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1726887165/aptitude_Handwritten_Notes_dra8ju.png' },
+        { bookName: Notes.Reasoning, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1726887166/reasoning_Handwritten_Notes_igbwxe.png' },
+        { bookName: Notes.Maths, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1726887166/reasoning_Handwritten_Notes_1_jxxxf2.png' },
+    ]
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const currentNotesType = searchParams.get('notesType');
+    const [books, setBooks] = useState([])
+
+    useEffect(() => {
+        if (currentNotesType == notesType.APTITUDE) {
+            setBooks(aptitudeBooks)
+        } else if (currentNotesType == notesType.CODING) {
+            setBooks(codingBooks)
+        }
+    }, [books])
 
     const handleNavigation = (book) => {
         const queryParams = queryString.stringify({
@@ -21,7 +38,6 @@ const HandWrittenNotes = () => {
         });
         navigate(`/handwritten-book?${queryParams}`);
     };
-
 
     return (
         <div className="h-screen" style={{ backgroundColor: 'rgb(241 245 249)' }}>

@@ -43,9 +43,6 @@ export function NavbarComponent() {
                         <li>
                             <Link to="/" onClick={toggleMenu} aria-current="page">Home</Link>
                         </li>
-                        <li>
-                            <Link to="/jobs" onClick={toggleMenu} aria-current="page">Jobs</Link>
-                        </li>
                         {/* <li>
                             <Link to="/interviewExperience" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Interview Experience</Link>
                         </li> */}
@@ -55,8 +52,12 @@ export function NavbarComponent() {
                         <li>
                             <Link to="/about" onClick={toggleMenu} >About Us</Link>
                         </li>
+
                         {addJob && (
                             <>
+                                <li>
+                                    <Link to="/addBlog" onClick={toggleMenu} >Add Blog</Link>
+                                </li>
                                 <li>
                                     <Link to="/addJob" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Jobs</Link>
                                 </li>
