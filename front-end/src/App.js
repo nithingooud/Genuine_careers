@@ -28,10 +28,10 @@ function App() {
             <Route path='/jobs' element={<JobsComponent />} />
             <Route path='/job' element={<JobDetailsComponent />} />
             <Route path='/about' element={<AboutUsComponent />} />
-            {/* <Route path='/addJob' element={<AddJobDetails />} />
-            <Route path='/addBlog' element={<AddBlog />} /> */}
+            <Route path='/addJob' element={<AddJobDetails />} />
+            <Route path='/addBlog' element={<AddBlog />} />
             <Route path='/interviewExperience' element={<InterviewExperienceComponent />} />
-            {/* <Route path='/addCompany' element={<CompanyForm />} /> */}
+            <Route path='/addCompany' element={<CompanyForm />} />
             <Route path='/services' element={<ServicesComponent />} />
             <Route path="/handwritten-notes" element={<HandWrittenNotes />} />
             <Route path="/handwritten-book" element={<BookContent />} />

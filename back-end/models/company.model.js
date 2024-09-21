@@ -20,4 +20,7 @@ const companySchema = new mongoose.Schema({
     sector: { type: String }
 }, { timestamps: true })
 
+companySchema.index({ companyName: 1 }, { unique: true });
+
+
 mongoose.model('Company', companySchema)
