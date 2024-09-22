@@ -1,8 +1,6 @@
 
 import { Button, Kbd, Badge } from "flowbite-react";
-import { HiShoppingCart } from "react-icons/hi";
-import { FaRupeeSign } from "react-icons/fa";
-import { MdOutlineReviews, MdOutlineSearch } from "react-icons/md";
+import { HiChevronRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import queryString from 'query-string';
 
@@ -45,7 +43,7 @@ const HomeComponent = () => {
                     <a onClick={goToJobs} className="flex justify-center">
                         <Button outline gradientDuoTone="purpleToBlue">
                             <div className="flex items-center justify-center">
-                                <HiShoppingCart className="mr-2" />
+                                <HiChevronRight className="mr-2" />
                                 <span>Read More</span>
                             </div>
                         </Button>
@@ -69,7 +67,7 @@ const HomeComponent = () => {
                     <a onClick={goToBlogs} className="flex justify-center">
                         <Button outline gradientDuoTone="purpleToBlue">
                             <div className="flex items-center justify-center">
-                                <HiShoppingCart className="mr-2" />
+                                <HiChevronRight className="mr-2" />
                                 <span>Read More</span>
                             </div>
                         </Button>
@@ -92,7 +90,7 @@ const HomeComponent = () => {
                     <a onClick={() => goToNotes('coding')} className="flex justify-center">
                         <Button outline gradientDuoTone="purpleToBlue">
                             <div className="flex items-center justify-center">
-                                <HiShoppingCart className="mr-2" />
+                                <HiChevronRight className="mr-2" />
                                 <span>Read More</span>
                             </div>
                         </Button>
@@ -115,7 +113,7 @@ const HomeComponent = () => {
                     <a onClick={() => goToNotes('aptitude')} className="flex justify-center">
                         <Button outline gradientDuoTone="purpleToBlue">
                             <div className="flex items-center justify-center">
-                                <HiShoppingCart className="mr-2" />
+                                <HiChevronRight className="mr-2" />
                                 <span>Read More</span>
                             </div>
                         </Button>

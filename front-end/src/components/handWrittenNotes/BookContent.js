@@ -3,11 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { HandWrittenNotes } from '../../common/constants';
-import { List } from "flowbite-react";
-import { Blockquote, Badge } from "flowbite-react";
-
-
-
+import { Blockquote } from "flowbite-react";
+import { Button } from "flowbite-react";
+import { HiShoppingCart } from "react-icons/hi";
 
 const BookContent = () => {
     const [searchParams] = useSearchParams();
@@ -68,15 +66,16 @@ const BookContent = () => {
     );
 
     return (
-        <div className="max-w-4xl mx-auto mt-3">
-            <div className='bg-slate-100 px-4'>
-                <span className="text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <div className="w-full max-w-4xl mx-auto mt-3 px-4 overflow-x-hidden">
+            <div className='bg-slate-100'>
+                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent break-words">
                     {currentBook} HandWritten Notes
-                </span>
+                </h1>
+
                 {/* Carousel */}
-                <div className="w-full mx-auto mt-4">
+                <div className="w-full mt-4">
                     <span
-                        className="text-2xl mb-4 font-bold flex justify-center bg-slate-400"
+                        className="text-xl md:text-2xl mb-4 font-bold flex justify-center bg-slate-400"
                         style={{ fontFamily: 'math', marginTop: '0.2rem', fontWeight: 'bolder' }}>
                         Preview
                     </span>
@@ -92,69 +91,77 @@ const BookContent = () => {
                             renderArrowPrev={renderArrowPrev}
                             renderArrowNext={renderArrowNext}
                         >
-                            <div>
-                                <img
-                                    src={HandWrittenNotes[currentBook].PreviewImages[0]}
-                                    className="max-h-[60vh] object-contain"
-                                />
-                                <p className="legend">{currentBook} HandWritten Notes</p>
-                            </div>
-                            <div>
-                                <img
-                                    src={HandWrittenNotes[currentBook].PreviewImages[1]}
-                                    className="max-h-[60vh] object-contain"
-                                />
-                                <p className="legend">Page 1</p>
-                            </div>
-                            <div>
-                                <img
-                                    src={HandWrittenNotes[currentBook].PreviewImages[2]}
-                                    className="max-h-[60vh] object-contain"
-                                />
-                                <p className="legend">Page 2</p>
-                            </div>
-                            <div>
-                                <img
-                                    src={HandWrittenNotes[currentBook].PreviewImages[3]}
-                                    className="max-h-[60vh] object-contain"
-                                />
-                                <p className="legend">Page 3</p>
-                            </div>
+                            {HandWrittenNotes[currentBook].PreviewImages.map((image, index) => (
+                                <div key={index}>
+                                    <img
+                                        src={image}
+                                        className="max-h-[60vh] object-contain w-full"
+                                        alt={`Preview ${index + 1}`}
+                                    />
+                                    <p className="legend">{index === 0 ? `${currentBook} HandWritten Notes` : `Page ${index}`}</p>
+                                </div>
+                            ))}
                         </Carousel>
                     </div>
                 </div>
 
-                <div className='p-6 m-6'>
-                    <Blockquote>
+                <div className='p-4 md:p-6'>
+                    <Blockquote className="text-sm md:text-base">
                         {HandWrittenNotes[currentBook].description}
                     </Blockquote>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                        <Badge color="warning" size="sm">Benefits</Badge>
-                    </div>
-                    <List>
-                        {HandWrittenNotes[currentBook]?.benefits.map(item => (
-                            <List.Item>{item}</List.Item>
-                        ))}
-                    </List>
-                    <div>
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            <Badge color="warning" size="sm">Contents</Badge>
-                        </div>
-                        <List>
-                            {HandWrittenNotes[currentBook]?.contents.map(item => (
-                                <List.Item>{item}</List.Item>
+                    <div className="mt-4">
+                        <h3 className="text-lg md:text-xl font-semibold mb-2">Benefits:</h3>
+                        <ul className="mb-6 text-sm md:text-base">
+                            {HandWrittenNotes[currentBook]?.benefits.map((item, index) => (
+                                <li key={index} className="flex items-start mb-2">
+                                    <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>{item}</span>
+                                </li>
                             ))}
-                        </List>
+                        </ul>
+                    </div>
+                    <div className="mt-4">
+                        <h3 className="text-lg md:text-xl font-semibold mb-2">Contents:</h3>
+                        <ul className="mb-6 text-sm md:text-base">
+                            {HandWrittenNotes[currentBook]?.contents.map((item, index) => (
+                                <li key={index} className="flex items-start mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 flex-shrink-0 mt-1" viewBox="0 -960 960 960" fill="#000000"><path d="m700-300-57-56 84-84H120v-80h607l-83-84 57-56 179 180-180 180Z" /></svg>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
 
-                {/* Syllabus */}
-
-
+                <div className="mt-2 px-4 md:px-6 pb-6">
+                    <div className="bg-white shadow-md p-4 md:p-6">
+                        <h3 className="text-xl md:text-2xl font-semibold mb-4">Pdf Download</h3>
+                        <p className="text-gray-600 mb-4 text-sm md:text-base">To download full length Pdf Book</p>
+                        <p className="text-3xl md:text-4xl font-bold mb-6">₹{HandWrittenNotes[currentBook].cost}<span className="text-lg md:text-xl font-normal text-gray-600">/pdf</span></p>
+                        <ul className="mb-6 text-sm md:text-base">
+                            <li className="flex items-center mb-2">
+                                <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                                1 User
+                            </li>
+                            <li className="flex items-center mb-2">
+                                <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                                Full length Pdf
+                            </li>
+                            <li className="flex items-center mb-2">
+                                <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                                Life time validity
+                            </li>
+                        </ul>
+                        <Button gradientDuoTone="purpleToBlue" className="w-full">
+                            <div className="flex items-center justify-center">
+                                <HiShoppingCart className="mr-2" />
+                                <span>Buy Now</span>
+                            </div>
+                        </Button>
+                    </div>
+                </div>
             </div>
         </div>
-
-
     )
 }
 

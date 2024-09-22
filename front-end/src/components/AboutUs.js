@@ -1,6 +1,8 @@
 import React from "react"
 import '../styles/AboutJs.css'
 import { Card } from "flowbite-react";
+import 'react-toastify/dist/ReactToastify.css';
+import { socialicon01, socialicon02, socialicon03, socialicon04 } from '../common/imagePath';
 
 
 const AboutUsComponent = () => {
@@ -24,6 +26,7 @@ const AboutUsComponent = () => {
                         </div>
                     </div>
                 </section>
+
                 <div >
                     <h2 className="font-extrabold  text-gray-900">
                         About Us

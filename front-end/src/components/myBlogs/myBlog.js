@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 import queryString from 'query-string';
 import Lottie from 'react-lottie'
 import { wrongInputAnimation } from "../../styles/imagePath";
+import { Badge } from "flowbite-react";
+import { Button } from "flowbite-react";
+
+
 
 
 
@@ -17,7 +21,7 @@ const MyBlogsPage = () => {
 
     useEffect(() => {
         getBlogs()
-    }, []);
+    }, [blogs]);
 
     const getBlogs = async () => {
         const result = await axios.get(`${API_BASE_URL}/api/blogs`)
@@ -63,32 +67,51 @@ const MyBlogsPage = () => {
     }
 
     return (
-        <div>
-            <div className="container mx-auto py-4 max-w-2xl mx-auto" >
-                {/* <h1 className="text-4xl font-bold text-center bg-indigo-100 mb-8">All Blogs</h1> */}
+        <div className="from-gray-100 to-gray-200 min-h-screen py-4 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+                <h1 className="text-4xl font-extrabold text-center text-gray-900 mb-6 font-sans">
+                    Discover Our Latest Blogs
+                </h1>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {blogs.length == 0 ? renderWrongInput() : blogs.map((blog) => (
-                        <div
-                            key={blog._id}
-                            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
-                        >
-                            <h2 className="text-2xl font-semibold mb-4">{blog.heading}</h2>
-                            <p className="text-gray-700 mb-4">
-                                {blog.content.substring(0, 100)}...
-                            </p>
+                {blogs.length === 0 ? (
+                    renderWrongInput()
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {blogs.map((blog) => (
+                            <a onClick={() => handleNavigation(blog._id)}>
 
-                            <a
-                                onClick={() => handleNavigation(blog._id)}
-                                className="text-blue-500 hover:text-blue-700 cursor-pointer font-semibold"
-                            >
-                                Read more
+                                <div
+                                    key={blog._id}
+                                    className="bg-white rounded-md shadow-md overflow-hidden transform transition duration-500 hover:scale-95 hover:shadow-xl"
+                                >
+                                    <div className="px-6 py-2">
+                                        <h2 className="text-2xl font-semibold  text-gray-800 font-sans">{blog.heading}</h2>
+                                        <p className="text-gray-600 mb-2 font-poppins">
+                                            {blog.content.substring(0, 100)}...
+                                        </p>
+                                        <div className="flex items-center justify-between ">
+                                            <span className="text-sm text-gray-500 font-sans">5 min read</span>
+
+                                            <Button gradientDuoTone="purpleToBlue">
+                                                <div className="flex items-center justify-center">
+                                                    <span>Read More</span>
+                                                </div>
+                                            </Button>
+                                        </div>
+                                    </div>
+
+                                    <div className="px-6 py-2 bg-indigo-50 flex flex-wrap gap-2">
+                                        {(blog?.tags || []).map((item) => (
+                                            <Badge color="warning">{item}</Badge>
+
+                                        ))}
+
+                                    </div>
+                                </div>
                             </a>
-
-                            <div className="border-t border-gray-300 mt-4"></div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
 

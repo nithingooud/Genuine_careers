@@ -1,5 +1,5 @@
 import { Button, Carousel } from "flowbite-react";
-import { HiDocumentDownload } from "react-icons/hi";
+import { HiDownload } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { Notes, notesType } from "../../common/constants";
 import queryString from 'query-string';
@@ -25,12 +25,16 @@ const HandWrittenNotes = () => {
     const [books, setBooks] = useState([])
 
     useEffect(() => {
+        updateBooks();
+    }, [])
+
+    const updateBooks = () => {
         if (currentNotesType == notesType.APTITUDE) {
             setBooks(aptitudeBooks)
         } else if (currentNotesType == notesType.CODING) {
             setBooks(codingBooks)
         }
-    }, [books])
+    }
 
     const handleNavigation = (book) => {
         const queryParams = queryString.stringify({
@@ -51,8 +55,8 @@ const HandWrittenNotes = () => {
                                 <a onClick={() => handleNavigation(book)}>
                                     <Button outline gradientDuoTone="purpleToBlue">
                                         <div className="flex items-center justify-between">
-                                            <HiDocumentDownload className="mr-2" />
-                                            <span>Read More</span>
+                                            <HiDownload className="mr-2" />
+                                            <span>Download Pdf</span>
                                         </div>
                                     </Button>
                                 </a>
