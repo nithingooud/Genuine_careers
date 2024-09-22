@@ -36,7 +36,7 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
             <div className="flex items-center">
                 <div className="ml-1 flex-1">
                     <div className="flex items-center justify-between">
-                        <p class="subpixel-antialiased text-2xl">{Position}</p>
+                        <p className="subpixel-antialiased text-2xl">{Position}</p>
                         <div className="flex items-center gap-1">
                             <p className="text-sm text-gray-700 dark:text-gray-400">{Experience?.minimum}-{Experience?.maximum} years</p>
                             <svg className="h-4 w-4 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,7 +45,7 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
                         </div>
                     </div>
                     <div className="flex items-center justify-between" >
-                        <p class="subpixel-antialiased text-md">{CompanyName}</p>
+                        <p className="subpixel-antialiased text-md">{CompanyName}</p>
                         <div className="flex items-center gap-1">
                             <p className="text-sm text-gray-700 dark:text-gray-400">{Location}</p>
                             <svg className="h-4 w-4 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <polygon points="3 11 22 2 13 21 11 13 3 11" /></svg>

@@ -20,7 +20,7 @@ const Card = ({ interviewExperienceDetails }) => {
                     <div className='flex items-center gap-2'>
                         <img className="w-10 h-10 object-cover rounded" alt='logo'
                             src={interviewExperienceDetails?.company?.logo} />
-                        <p class="subpixel-antialiased">{interviewExperienceDetails?.company?.companyName}</p>
+                        <p className="subpixel-antialiased">{interviewExperienceDetails?.company?.companyName}</p>
                     </div>
                     <div className='flex items-center gap-2'>
                         <Kbd>{interviewExperienceDetails?.role}</Kbd>

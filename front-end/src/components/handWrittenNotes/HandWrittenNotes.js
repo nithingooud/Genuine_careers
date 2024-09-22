@@ -48,7 +48,7 @@ const HandWrittenNotes = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8">
                 {books.map((book, index) =>
                 (
-                    <div key={index} class="p-3 m-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md ">
+                    <div key={index} className="p-3 m-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md ">
                         <a onClick={() => handleNavigation(book)}>
                             <div className="p-3 flex flex-col justify-center items-center bg-white">
                                 <img alt="Java Book" className="w-48 h-64 object-cover rounded-lg p-2" src={book.link}></img>
