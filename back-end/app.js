@@ -20,10 +20,12 @@ require('./models/job.model')
 require('./models/company.model')
 require('./models/interviewExperience.model')
 require('./models/blogs.model')
+require('./models/notes.model')
 
 app.use(require('./routes/job.route'))
 app.use(require('./routes/interviewExperience.route'))
 app.use(require('./routes/blogs.route'))
+app.use(require('./routes/notes.route'))
 
 
 

@@ -11,7 +11,7 @@ const HandWrittenNotes = () => {
     const codingBooks = [
         { bookName: Notes.Java, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725377160/developer.nithin/JAVA_ytcq5h.jpg' },
         { bookName: Notes.Python, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725454935/developer.nithin/python.jpg' },
-        { bookName: Notes.Cpp, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725457305/developer.nithin/Cpp.jpg' },
+        { bookName: Notes.OOPS_using_Cpp, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725457305/developer.nithin/Cpp.jpg' },
     ]
 
     const aptitudeBooks = [

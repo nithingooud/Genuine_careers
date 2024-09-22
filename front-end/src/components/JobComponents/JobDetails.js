@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { Button, Card } from 'flowbite-react'
 import { Badge } from "flowbite-react";
+import { HiChevronRight } from "react-icons/hi";
+
 import '../../styles/jobDetails.css'
 import { useLocation, useSearchParams } from 'react-router-dom';
 import axios from 'axios'
@@ -58,9 +60,6 @@ export function JobDetailsComponent() {
                                     src={jobDetails?.company?.logo || ''} />
                                 <div style={{ fontFamily: 'math', marginTop: '0.2rem', fontWeight: 'bolder' }}>{jobDetails?.company?.companyName || ''}</div>
 
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Button onClick={() => window.open(jobDetails?.applyLink, '_blank')}>Apply</Button>
                             </div>
                         </div>
                         <div className="flex justify-between">
@@ -157,6 +156,15 @@ export function JobDetailsComponent() {
                             ))}
                         </div>
                     </div>
+                    <div className="flex justify-center">
+                        <Button gradientDuoTone="purpleToBlue" onClick={() => window.open(jobDetails?.applyLink, '_blank')}>
+                            <div className="flex items-center justify-center">
+                                <HiChevronRight className="mr-2" />
+                                <span>Apply Now</span>
+                            </div>
+                        </Button>
+                    </div>
+
                 </Card>
             </div>}
         </>

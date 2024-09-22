@@ -19,7 +19,7 @@ const FiltersComponent = (props) => {
 
     const employmentTypes = ['Full Time', 'Internship']
     const locations = ['Hyderabad', 'Bengaluru', 'Chennai', 'Gurgaon', 'Pune', 'Mumbai', 'Delhi']
-    const roles = ['Software Engineer', 'SDE', 'Quality Analyst', 'Marketing Specialist', 'Web Designer', 'App Developer', 'Data Engineer', 'Web Developer']
+    // const roles = ['Software Engineer', 'SDE', 'Quality Analyst', 'Marketing Specialist', 'Web Designer', 'App Developer', 'Data Engineer', 'Web Developer']
     const jobspostedIn = ['last 24 hrs', 'last week', 'last month']
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -82,23 +82,7 @@ const FiltersComponent = (props) => {
                         </Select>
                     </FormControl>
                 </Box>
-                <Box mb={2}>
-                    <FormControl fullWidth variant="outlined">
-                        <InputLabel>Role</InputLabel>
-                        <Select
-                            name="role"
-                            value={formData.role}
-                            onChange={handleChange}
-                            label="Role"
-                        >
-                            {roles.map((type) => (
-                                <MenuItem key={type} value={type}>
-                                    {type}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                </Box>
+
                 <Box mb={2}>
                     <TextField
                         fullWidth

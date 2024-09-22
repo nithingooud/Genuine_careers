@@ -12,7 +12,8 @@ const locations = {
     MUMBAI: 'Mumbai',
     CHENNAI: 'Chennai',
     PUNE: 'Pune',
-    DELHI: 'Delhi'
+    DELHI: 'Delhi',
+    REMOTE: 'Remote'
 }
 
 const employmentTypes = {
@@ -20,16 +21,6 @@ const employmentTypes = {
     INTERNSHIP: 'Internship'
 }
 
-const roles = {
-    SOFT: 'Software Engineer',
-    SDE: 'SDE',
-    QA: 'Quality Analyst',
-    MARKETING_SPECIALIST: 'Marketing Specialist',
-    WEB_DESIGNER: 'Web Designer',
-    APP_DEVELOPER: 'App Developer',
-    DATA_ENGINEER: 'Data Engineer',
-    WEB_DEVELOPER: 'Web Developer'
-}
 
 
 router.use(bodyParser.json());
@@ -103,9 +94,7 @@ router.post('/addJob', async (req, res) => {
             applyLink
         } = req.body;
 
-        if (!Object.values(roles).includes(role)) {
-            return res.status(400).json({ error: 'Invalid role' });
-        }
+
 
         // Validate location
         if (!Object.values(locations).includes(location)) {

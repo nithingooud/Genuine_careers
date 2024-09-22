@@ -8,7 +8,8 @@ const locations = {
     MUMBAI: 'Mumbai',
     CHENNAI: 'Chennai',
     PUNE: 'Pune',
-    DELHI: 'Delhi'
+    DELHI: 'Delhi',
+    REMOTE: 'Remote'
 }
 
 const employmentTypes = {
@@ -16,16 +17,6 @@ const employmentTypes = {
     INTERNSHIP: 'Internship'
 }
 
-const roles = {
-    SOFT: 'Software Engineer',
-    SDE: 'SDE',
-    QA: 'Quality Analyst',
-    MARKETING_SPECIALIST: 'Marketing Specialist',
-    WEB_DESIGNER: 'Web Designer',
-    APP_DEVELOPER: 'App Developer',
-    DATA_ENGINEER: 'Data Engineer',
-    WEB_DEVELOPER: 'Web Developer'
-}
 
 const jobSchema = new mongoose.Schema({
     company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
@@ -33,7 +24,7 @@ const jobSchema = new mongoose.Schema({
     responsibilities: [{ type: String }],
     skills: [{ type: String }],
     experience: { minimum: { type: Number }, maximum: { type: Number } },
-    role: { type: String, enum: Object.values(roles) },
+    role: { type: String },
     location: { type: String, enum: Object.values(locations) },
     employmentType: { type: String, enum: Object.values(employmentTypes) },
     applyLink: { type: String }

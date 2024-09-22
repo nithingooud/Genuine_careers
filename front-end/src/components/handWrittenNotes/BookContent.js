@@ -2,14 +2,41 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { HandWrittenNotes } from '../../common/constants';
+// import { HandWrittenNotes } from '../../common/constants';
 import { Blockquote } from "flowbite-react";
 import { Button } from "flowbite-react";
 import { HiShoppingCart } from "react-icons/hi";
+import { useEffect, useState } from 'react';
+import axios from 'axios'
+import { API_BASE_URL } from '../../environment'
+import { Rating } from "flowbite-react";
+
 
 const BookContent = () => {
     const [searchParams] = useSearchParams();
     const currentBook = searchParams.get('book');
+    const [HandWrittenNotes, setHandWrittenNotes] = useState({
+        previewImages: [],
+        description: '',
+        benefits: [],
+        contents: [],
+        cost: '0',
+        title: '',
+        subTitle: '',
+        whatsAppLinK: '',
+    });
+
+    useEffect(() => {
+        getNotes();
+    }, [])
+
+    const getNotes = async () => {
+        const result = await axios.post(`${API_BASE_URL}/notes`, { notes: currentBook });
+        if (result.status == 200 && result.data.length > 0) {
+            console.log(result)
+            setHandWrittenNotes(result.data[0])
+        }
+    }
 
     // Custom function for Previous Arrow
     const renderArrowPrev = (clickHandler, hasPrev, label) => (
@@ -68,8 +95,8 @@ const BookContent = () => {
     return (
         <div className="w-full max-w-4xl mx-auto mt-3 px-4 overflow-x-hidden">
             <div className='bg-slate-100'>
-                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent break-words">
-                    {currentBook} HandWritten Notes
+                <h1 className="text-4xl ml-2 md:text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent break-words">
+                    {HandWrittenNotes.title}
                 </h1>
 
                 {/* Carousel */}
@@ -91,7 +118,7 @@ const BookContent = () => {
                             renderArrowPrev={renderArrowPrev}
                             renderArrowNext={renderArrowNext}
                         >
-                            {HandWrittenNotes[currentBook].PreviewImages.map((image, index) => (
+                            {HandWrittenNotes?.previewImages.map((image, index) => (
                                 <div key={index}>
                                     <img
                                         src={image}
@@ -107,12 +134,12 @@ const BookContent = () => {
 
                 <div className='p-4 md:p-6'>
                     <Blockquote className="text-sm md:text-base">
-                        {HandWrittenNotes[currentBook].description}
+                        {HandWrittenNotes.description}
                     </Blockquote>
                     <div className="mt-4">
                         <h3 className="text-lg md:text-xl font-semibold mb-2">Benefits:</h3>
                         <ul className="mb-6 text-sm md:text-base">
-                            {HandWrittenNotes[currentBook]?.benefits.map((item, index) => (
+                            {HandWrittenNotes?.benefits.map((item, index) => (
                                 <li key={index} className="flex items-start mb-2">
                                     <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                                     <span>{item}</span>
@@ -121,9 +148,9 @@ const BookContent = () => {
                         </ul>
                     </div>
                     <div className="mt-4">
-                        <h3 className="text-lg md:text-xl font-semibold mb-2">Contents:</h3>
+                        <h3 className="text-lg md:text-xl font-semibold mb-1">Contents:</h3>
                         <ul className="mb-6 text-sm md:text-base">
-                            {HandWrittenNotes[currentBook]?.contents.map((item, index) => (
+                            {HandWrittenNotes?.contents.map((item, index) => (
                                 <li key={index} className="flex items-start mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 flex-shrink-0 mt-1" viewBox="0 -960 960 960" fill="#000000"><path d="m700-300-57-56 84-84H120v-80h607l-83-84 57-56 179 180-180 180Z" /></svg>
                                     <span>{item}</span>
@@ -133,11 +160,25 @@ const BookContent = () => {
                     </div>
                 </div>
 
-                <div className="mt-2 px-4 md:px-6 pb-6">
+                <div className="px-2 md:px-6 pb-6">
                     <div className="bg-white shadow-md p-4 md:p-6">
-                        <h3 className="text-xl md:text-2xl font-semibold mb-4">Pdf Download</h3>
-                        <p className="text-gray-600 mb-4 text-sm md:text-base">To download full length Pdf Book</p>
-                        <p className="text-3xl md:text-4xl font-bold mb-6">₹{HandWrittenNotes[currentBook].cost}<span className="text-lg md:text-xl font-normal text-gray-600">/pdf</span></p>
+                        <h3 className="text-xl md:text-2xl font-semibold mb-1">Pdf Download</h3>
+                        <div className="flex items-center space-x-4">
+                            <Rating>
+                                <Rating.Star />
+                                <Rating.Star />
+                                <Rating.Star />
+                                <Rating.Star />
+                                <Rating.Star />
+                            </Rating>
+                            <p className="text-xl md:text-xl text-gray-500">(3 customer reviews)</p>
+                        </div>
+                        <div className="flex items-center space-x-4">
+                            <p className="text-xl md:text-2xl font-bold  line-through text-gray-500">₹{HandWrittenNotes.cost * 2 + 2}</p>
+                            <p className="text-3xl md:text-2xl font-bold text-gray-500">₹{HandWrittenNotes.cost}</p>
+                            <p className="text-xl md:text-2xl text-red-500 font-semibold">(50% OFF)</p>
+                        </div>
+
                         <ul className="mb-6 text-sm md:text-base">
                             <li className="flex items-center mb-2">
                                 <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -152,12 +193,13 @@ const BookContent = () => {
                                 Life time validity
                             </li>
                         </ul>
-                        <Button gradientDuoTone="purpleToBlue" className="w-full">
+                        <Button gradientDuoTone="purpleToBlue" className="w-full" onClick={() => window.open(HandWrittenNotes?.whatsAppLink, '_blank')}>
                             <div className="flex items-center justify-center">
                                 <HiShoppingCart className="mr-2" />
                                 <span>Buy Now</span>
                             </div>
                         </Button>
+
                     </div>
                 </div>
             </div>

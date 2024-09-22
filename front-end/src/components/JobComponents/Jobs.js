@@ -148,10 +148,7 @@ export function JobsComponent({ onDrawerOpen, onDrawerClose }) {
                 <Drawer open={isOpen} onClose={() => {
                     handleClose();
                     onDrawerClose();
-                }} style={{
-                    marginTop: '3rem',
-                    height: 'calc(100% - 3rem)'
-                }}>
+                }} >
                     <Drawer.Header title="Filters" />
                     <Drawer.Items>
                         <FiltersComponent onSubmit={handleFiltersSubmit} />

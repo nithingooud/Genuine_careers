@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 import NavbarComponent from './components/Navbar';
 import { JobsComponent } from './components/JobComponents/Jobs';
 import { JobDetailsComponent } from './components/JobComponents/JobDetails';
@@ -18,6 +19,10 @@ import BlogDetails from './components/myBlogs/blogComponent';
 
 
 function App() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
+  const handleDrawerClose = () => setIsDrawerOpen(false);
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
@@ -25,8 +30,8 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path='/' element={<HomeComponent />} />
-            <Route path='/jobs' element={<JobsComponent />} />
-            <Route path='/job' element={<JobDetailsComponent />} />
+            <Route path='/jobs' element={<JobsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
+            <Route path='/job' element={<JobDetailsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
             <Route path='/about' element={<AboutUsComponent />} />
             <Route path='/addJob' element={<AddJobDetails />} />
             <Route path='/addBlog' element={<AddBlog />} />

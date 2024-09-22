@@ -8,11 +8,6 @@ import { wrongInputAnimation } from "../../styles/imagePath";
 import { Badge } from "flowbite-react";
 import { Button } from "flowbite-react";
 
-
-
-
-
-
 const MyBlogsPage = () => {
 
     const [blogs, setBlogs] = useState([]);
@@ -21,12 +16,11 @@ const MyBlogsPage = () => {
 
     useEffect(() => {
         getBlogs()
-    }, [blogs]);
+    }, []);
 
     const getBlogs = async () => {
         const result = await axios.get(`${API_BASE_URL}/api/blogs`)
         if (result.status == 200) {
-            console.log(result)
             setBlogs(result.data)
         }
     }
