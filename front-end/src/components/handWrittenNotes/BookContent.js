@@ -33,7 +33,6 @@ const BookContent = () => {
     const getNotes = async () => {
         const result = await axios.post(`${API_BASE_URL}/notes`, { notes: currentBook });
         if (result.status == 200 && result.data.length > 0) {
-            console.log(result)
             setHandWrittenNotes(result.data[0])
         }
     }
@@ -171,11 +170,11 @@ const BookContent = () => {
                                 <Rating.Star />
                                 <Rating.Star />
                             </Rating>
-                            <p className="text-xl md:text-xl text-gray-500">(3 customer reviews)</p>
+                            <p className="text-xl md:text-xl text-gray-500 font-poppins">(3 customer reviews)</p>
                         </div>
                         <div className="flex items-center space-x-4">
                             <p className="text-xl md:text-2xl font-bold  line-through text-gray-500">₹{HandWrittenNotes.cost * 2 + 2}</p>
-                            <p className="text-3xl md:text-2xl font-bold text-gray-500">₹{HandWrittenNotes.cost}</p>
+                            <p className="text-3xl md:text-2xl font-bold text-gray-900">₹{HandWrittenNotes.cost}</p>
                             <p className="text-xl md:text-2xl text-red-500 font-semibold">(50% OFF)</p>
                         </div>
 
