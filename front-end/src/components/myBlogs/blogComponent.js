@@ -11,14 +11,13 @@ const BlogDetails = () => {
 
     const [searchParams] = useSearchParams();
     const currentBlogId = searchParams.get('_id');
-    const [blog, setBlog] = useState(null)
+    const [blog, setBlog] = useState(null);
 
     useEffect(() => {
         getBlog();
     }, [currentBlogId]);
 
     const getBlog = async () => {
-        console.log(currentBlogId)
         const response = await axios.get(`${API_BASE_URL}/api/blogs/${currentBlogId}`)
         if (response.status == 200) {
             setBlog(response.data)
@@ -26,8 +25,6 @@ const BlogDetails = () => {
     }
 
     if (!blog) return <div>Loading...</div>;
-
-
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white mt-1">
