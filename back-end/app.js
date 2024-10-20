@@ -1,12 +1,16 @@
 const express = require('express')
 const { mongoose } = require('mongoose')
+const env = require('dotenv').config();
 const app = express()
 const PORT = 2000
 const cors = require('cors');
 
+
 app.use(cors())
 
-mongoose.connect('mongodb://localhost:27017/developer-nithin')
+URI = process.env.MONGO_URL
+mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 mongoose.connection.on('connected', () => {
     console.log("mongo connected successfully");
