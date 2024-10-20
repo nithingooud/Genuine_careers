@@ -4,6 +4,6 @@ module.exports = {
         script: "app.js",
         instances: -1,
         exec_mode: "cluster",
-        node_args: "--max-old-space-size=4096"
+        node_args: "--max-old-space-size=4096 -r dotenv/config"
     }]
 }
