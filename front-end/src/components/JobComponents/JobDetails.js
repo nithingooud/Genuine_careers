@@ -51,7 +51,7 @@ export function JobDetailsComponent() {
 
     return (
         <>
-            {loading ? <div>Loading...</div> : <div className="py-4">
+            {loading ? <div>Loading...</div> : <div className="py-4 pt-24">
                 <Card className="max-w-4xl mx-auto">
                     <div className="job-detail">
                         <div className="flex items-center justify-between">

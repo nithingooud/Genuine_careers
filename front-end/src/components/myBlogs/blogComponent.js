@@ -27,7 +27,7 @@ const BlogDetails = () => {
     if (!blog) return <div>Loading...</div>;
 
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white mt-1">
+        <div className="max-w-2xl mx-auto p-6 bg-white mt-1 ">
             <h1 className="text-3xl font-bold text-gray-900 mb-6 bg-indigo-100 p-2 rounded">{blog.heading}</h1>
             <div className="text-gray-700">
                 <ReactMarkdown

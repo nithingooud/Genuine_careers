@@ -23,6 +23,7 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
         return colors[Math.floor(Math.random() * colors.length)];
     };
     return (
+
         <Card className="max-w-2xl mx-auto mb-2 shadow-md bg-white rounded-lg overflow-hidden">
             <div className="flex items-center justify-between" >
                 <img className="w-20 h-20 md:w-20 md:h-20 object-cover rounded" alt='logo'
@@ -65,6 +66,7 @@ const JobCardComponent = ({ logo, CompanyName, Position, Experience, Location, j
                 </div>
             </div>
         </Card>
+
     )
 }
 

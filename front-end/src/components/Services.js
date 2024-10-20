@@ -8,7 +8,7 @@ const ServicesComponent = () => {
 
     return (
         <>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-8 mt-8" >
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-8 mt-8 pt-24" >
                 <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <BsPersonVideo3 className="h-10 w-10 mb-2" />
                     <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Mock Interview</h5>

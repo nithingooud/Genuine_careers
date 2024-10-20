@@ -61,7 +61,7 @@ const MyBlogsPage = () => {
     }
 
     return (
-        <div className="from-gray-100 to-gray-200 min-h-screen py-4 px-4 sm:px-6 lg:px-8">
+        <div className="from-gray-100 to-gray-200 min-h-screen py-4 px-4 sm:px-6 lg:px-8 pt-24">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-4xl font-extrabold text-center text-gray-900 mb-6 font-sans">
                     Discover Our Latest Blogs

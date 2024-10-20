@@ -36,3 +36,13 @@ main {
     transform: none !important;
   }
 }
+
+.main-page-bg {
+  background: radial-gradient(circle at 10% 10%, #ff7f7f, transparent),
+    radial-gradient(circle at 90% 50%, #00ffcc, transparent),
+    radial-gradient(circle at 20% 80%, #ffff66, transparent),
+    radial-gradient(circle at 70% 20%, #ff99ff, transparent),
+    radial-gradient(circle at 50% 90%, #6699ff, transparent);
+  background-size: cover;
+  background-attachment: fixed;
+}

@@ -92,7 +92,7 @@ const BookContent = () => {
     );
 
     return (
-        <div className="w-full max-w-4xl mx-auto mt-3 px-4 overflow-x-hidden">
+        <div className="w-full max-w-4xl mx-auto mt-3 px-4 overflow-x-hidden pt-24">
             <div className='bg-slate-100'>
                 <h1 className="text-4xl ml-2 md:text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent break-words">
                     {HandWrittenNotes.title}

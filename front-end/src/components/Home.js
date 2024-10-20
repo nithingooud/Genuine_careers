@@ -23,10 +23,12 @@ const HomeComponent = () => {
     }
 
     return (
-        <div>
+        <div className="bg pt-8">
+            <div className=" mx-auto max-w-screen-xl text-center mt-12 " >
+                <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Ultimate Destination for <span className="text-blue-500">College Students</span> and <span className="text-red-500">Developers</span></h1>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8" >
-
-                <div className="max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   flex flex-col justify-between ">
+                <div style={{ backgroundColor: 'white' }} className="max-w-sm p-3 m-6 bg-blue  rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   flex flex-col justify-between ">
                     <div className="flex flex-col items-center">
                         <div className="flex-grow flex items-start justify-center ">
                             <img
@@ -49,7 +51,7 @@ const HomeComponent = () => {
                         </Button>
                     </a>
                 </div>
-                <div className="max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   flex flex-col justify-between">
+                <div style={{ backgroundColor: 'white' }} className="max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   flex flex-col justify-between">
                     <div className="flex flex-col items-center">
                         <div className="flex-grow flex items-start justify-center ">
                             <img
@@ -73,7 +75,7 @@ const HomeComponent = () => {
                         </Button>
                     </a>
                 </div>
-                <div className="flex flex-col justify-between max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   ">
+                <div style={{ backgroundColor: 'white' }} className="flex flex-col justify-between max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   ">
                     <div className="flex flex-col items-center">
                         <div className="flex-grow flex items-start justify-center">
                             <img
@@ -96,7 +98,7 @@ const HomeComponent = () => {
                         </Button>
                     </a>
                 </div>
-                <div className="flex flex-col justify-between max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   ">
+                <div style={{ backgroundColor: 'white' }} className="flex flex-col justify-between max-w-sm p-3 m-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[320px] max-w-[320px] shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer hover:shadow-indigo-400 bg-opacity-25 backdrop-filter backdrop-blur-md   ">
                     <div className="flex flex-col items-center">
                         <div className="flex-grow flex items-start justify-center">
                             <img
@@ -119,6 +121,8 @@ const HomeComponent = () => {
                         </Button>
                     </a>
                 </div>
+            </div>
+            <div style={{ height: '11rem' }}>
             </div>
         </div>
     )

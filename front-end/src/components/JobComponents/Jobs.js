@@ -117,7 +117,7 @@ export function JobsComponent({ onDrawerOpen, onDrawerClose }) {
     }
 
     return (
-        <div className="p-4">
+        <div className="pt-24">
             {loading && jobsData.length == 0 ? <div>Loading...</div> :
                 <>
                     <div className="d-flex flex-row align-items-center justify-content-center">

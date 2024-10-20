@@ -68,7 +68,7 @@ const CompanyForm = () => {
     };
 
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" className='pt-24'>
             <Typography variant="h6" gutterBottom>Create a Company</Typography>
             <form onSubmit={handleSubmit}>
                 <Box mb={2}>

@@ -128,7 +128,7 @@ const AddJobDetails = () => {
     };
 
     return (
-        <div className="container mx-auto mt-8 mb-4">
+        <div className="container mx-auto mt-8 mb-4 pt-12">
             <h1 className="text-xl font-semibold mb-4 mt-4">Create a New Job</h1>
             <Formik
                 initialValues={initialValues}

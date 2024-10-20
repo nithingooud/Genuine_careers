@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 const HandWrittenNotes = () => {
 
     const codingBooks = [
-        { bookName: Notes.Java, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725377160/developer.nithin/JAVA_ytcq5h.jpg' },
-        { bookName: Notes.Python, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725454935/developer.nithin/python.jpg' },
+        { bookName: Notes.OOPS_using_Java, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725377160/developer.nithin/JAVA_ytcq5h.jpg' },
+        // { bookName: Notes.Python, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725454935/developer.nithin/python.jpg' },
         { bookName: Notes.OOPS_using_Cpp, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725457305/developer.nithin/Cpp.jpg' },
     ]
 
@@ -44,7 +44,7 @@ const HandWrittenNotes = () => {
     };
 
     return (
-        <div className="h-screen">
+        <div className="h-screen pt-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-8">
                 {books.map((book, index) =>
                 (

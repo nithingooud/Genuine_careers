@@ -7,7 +7,7 @@ import { socialicon01, socialicon02, socialicon03, socialicon04 } from '../commo
 
 const AboutUsComponent = () => {
     return (
-        <div>
+        <div className="pt-24">
             <Card className="max-w-5xl mx-auto mb-4 mt-4 shadow-md bg-white rounded-lg overflow-hidden">
                 <section className="bg-white dark:bg-gray-900">
                     <div className="py-4 px-2 mx-auto max-w-screen-xl text-center">
