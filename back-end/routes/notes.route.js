@@ -15,7 +15,7 @@ router.post('/upload-notes', async (req, res) => {
             benefits,
             previewImages,
             cost,
-            whatsAppLinK
+            whatsAppLink
         } = req.body;
         const notesDetails = {
             name,
@@ -26,7 +26,7 @@ router.post('/upload-notes', async (req, res) => {
             benefits,
             previewImages,
             cost,
-            whatsAppLinK
+            whatsAppLink
         };
 
 

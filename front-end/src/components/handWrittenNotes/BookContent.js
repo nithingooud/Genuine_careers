@@ -37,6 +37,8 @@ const BookContent = () => {
         }
     }
 
+
+
     // Custom function for Previous Arrow
     const renderArrowPrev = (clickHandler, hasPrev, label) => (
         <button
@@ -170,7 +172,6 @@ const BookContent = () => {
                                 <Rating.Star />
                                 <Rating.Star />
                             </Rating>
-                            <p className="text-xl md:text-xl text-gray-500 font-poppins">(3 customer reviews)</p>
                         </div>
                         <div className="flex items-center space-x-4">
                             <p className="text-xl md:text-2xl font-bold  line-through text-gray-500">₹{HandWrittenNotes.cost * 2 + 2}</p>

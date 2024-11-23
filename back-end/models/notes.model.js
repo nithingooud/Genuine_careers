@@ -15,7 +15,7 @@ const notesSchema = new mongoose.Schema({
     benefits: [String],
     previewImages: [String],
     cost: { type: String },
-    whatsAppLinK: { type: String }
+    whatsAppLink: { type: String }
 }, { timestamps: true }).index({ name: 1 }, { unique: true });
 
 mongoose.model('Notes', notesSchema)

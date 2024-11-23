@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 const HandWrittenNotes = () => {
 
     const codingBooks = [
+        { bookName: Notes.DBMS, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1732361842/reasoning_Handwritten_Notes_t9nzim.png' },
         { bookName: Notes.OOPS_using_Java, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725377160/developer.nithin/JAVA_ytcq5h.jpg' },
-        // { bookName: Notes.Python, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725454935/developer.nithin/python.jpg' },
         { bookName: Notes.OOPS_using_Cpp, link: 'https://res.cloudinary.com/nithinmanda/image/upload/v1725457305/developer.nithin/Cpp.jpg' },
     ]
 

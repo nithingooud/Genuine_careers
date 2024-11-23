@@ -19,6 +19,7 @@ export const Notes = {
     OOPS_using_Java: 'OOPS_using_Java',
     OOPS_using_Cpp: 'OOPS_using_Cpp',
     Operating_Systems: 'Operating_Systems',
+    DBMS: 'DBMS',
     Aptitude: 'Aptitude',
     Reasoning: 'Reasoning',
     Maths: 'Maths'
