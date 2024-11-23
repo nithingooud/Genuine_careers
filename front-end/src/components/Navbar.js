@@ -4,14 +4,6 @@ import { PERMISSION_KEY } from "../environment";
 
 export function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [addJob, setAddJob] = useState(false);
-
-    useEffect(() => {
-        let data = sessionStorage.getItem('isAdmin');
-        if (data == PERMISSION_KEY) {
-            setAddJob(true);
-        }
-    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -52,15 +44,6 @@ export function NavbarComponent() {
                             <li>
                                 <Link to="/about" className="font-poppins font-semibold hover:text-indigo-600">About Us</Link>
                             </li>
-                            {addJob && (
-                                <>
-                                    <li>
-                                        <Link to="/addJob" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Jobs</Link>
-                                    </li>
-                                </>
-                            )}
-
-
                         </ul>
                     </div>
                 </div>
@@ -82,19 +65,6 @@ export function NavbarComponent() {
                         <li>
                             <Link to="/about" onClick={toggleMenu} className="font-poppins font-semibold hover:text-indigo-600">About Us</Link>
                         </li>
-                        {addJob && (
-                            <>
-                                <li>
-                                    <Link to="/addBlog" onClick={toggleMenu} >Add Blog</Link>
-                                </li>
-                                <li>
-                                    <Link to="/addJob" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Jobs</Link>
-                                </li>
-                                <li>
-                                    <Link to="/addCompany" onClick={toggleMenu} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Company</Link>
-                                </li>
-                            </>
-                        )}
                     </ul>
                 </div>
 

@@ -19,10 +19,7 @@ import BlogDetails from './components/myBlogs/blogComponent';
 
 
 function App() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleDrawerOpen = () => setIsDrawerOpen(true);
-  const handleDrawerClose = () => setIsDrawerOpen(false);
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
@@ -30,19 +27,15 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path='/' element={<HomeComponent />} />
-            <Route path='/jobs' element={<JobsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
-            <Route path='/job' element={<JobDetailsComponent onDrawerOpen={handleDrawerOpen} onDrawerClose={handleDrawerClose} />} />
+            <Route path='/jobs' element={<JobsComponent />} />
+            <Route path='/job' element={<JobDetailsComponent />} />
             <Route path='/about' element={<AboutUsComponent />} />
-            <Route path='/addJob' element={<AddJobDetails />} />
-            <Route path='/addBlog' element={<AddBlog />} />
             <Route path='/interviewExperience' element={<InterviewExperienceComponent />} />
-            <Route path='/addCompany' element={<CompanyForm />} />
             <Route path='/services' element={<ServicesComponent />} />
             <Route path="/handwritten-notes" element={<HandWrittenNotes />} />
             <Route path="/handwritten-book" element={<BookContent />} />
             <Route path="/my-blogs" element={<MyBlogPage />} />
             <Route path="/blog-component" element={<BlogDetails />} />
-
           </Routes>
         </main>
         {/* <FooterComponent /> */}
