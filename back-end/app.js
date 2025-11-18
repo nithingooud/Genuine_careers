@@ -9,7 +9,7 @@ const cors = require('cors');
 app.use(cors())
 
 URI = process.env.MONGO_URL || "mongodb://localhost:27017"
-mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(URI);
 
 
 mongoose.connection.on('connected', () => {
