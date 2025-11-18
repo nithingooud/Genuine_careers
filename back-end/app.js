@@ -2,13 +2,13 @@ const express = require('express')
 const { mongoose } = require('mongoose')
 const env = require('dotenv').config();
 const app = express()
-const PORT = 2000
+const PORT = process.env.PORT || 2000
 const cors = require('cors');
 
 
 app.use(cors())
 
-URI = process.env.MONGO_URL
+URI = process.env.MONGO_URL || "mongodb://localhost:27017"
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
