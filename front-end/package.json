@@ -31,6 +31,7 @@
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
     "remark-gfm": "^4.0.0",
+    "serve": "^14.2.1",
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
@@ -39,7 +40,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve -s build -l 3000",
+    "deploy": "npm run build && npm run serve"
   },
   "eslintConfig": {
     "extends": [

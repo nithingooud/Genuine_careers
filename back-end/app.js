@@ -5,8 +5,15 @@ const app = express()
 const PORT = process.env.PORT || 2000
 const cors = require('cors');
 
+// Middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.use(cors())
+// CORS configuration - allow requests from frontend
+app.use(cors({
+    origin: ['http://13.203.94.160:3000', 'http://localhost:3000'],
+    credentials: true
+}))
 
 URI = process.env.MONGO_URL || "mongodb://localhost:27017"
 mongoose.connect(URI);
